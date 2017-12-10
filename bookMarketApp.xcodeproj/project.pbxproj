@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		64515CDE1FDBF0020052C0E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515CDD1FDBF0020052C0E3 /* AppDelegate.swift */; };
-		64515CE01FDBF0020052C0E3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515CDF1FDBF0020052C0E3 /* FirstViewController.swift */; };
-		64515CE21FDBF0020052C0E3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515CE11FDBF0020052C0E3 /* SecondViewController.swift */; };
 		64515CE51FDBF0020052C0E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515CE31FDBF0020052C0E3 /* Main.storyboard */; };
-		64515CE71FDBF0020052C0E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64515CE61FDBF0020052C0E3 /* Assets.xcassets */; };
 		64515CEA1FDBF0020052C0E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515CE81FDBF0020052C0E3 /* LaunchScreen.storyboard */; };
 		64515CF51FDBF0020052C0E3 /* bookMarketAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515CF41FDBF0020052C0E3 /* bookMarketAppTests.swift */; };
 		64515D001FDBF0030052C0E3 /* bookMarketAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515CFF1FDBF0030052C0E3 /* bookMarketAppUITests.swift */; };
+		64515D0E1FDBF1C80052C0E3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515D0D1FDBF1C80052C0E3 /* Home.storyboard */; };
+		64515D101FDBF1EA0052C0E3 /* Sell.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515D0F1FDBF1EA0052C0E3 /* Sell.storyboard */; };
+		64515D121FDBF20F0052C0E3 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515D111FDBF20F0052C0E3 /* Account.storyboard */; };
+		64515D141FDBF2D20052C0E3 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515D131FDBF2D20052C0E3 /* SignIn.storyboard */; };
+		64515D161FDBF3670052C0E3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D151FDBF3670052C0E3 /* SignInViewController.swift */; };
+		64515D1C1FDCF7E50052C0E3 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D1B1FDCF7E50052C0E3 /* Users.swift */; };
+		64515D231FDCF9AB0052C0E3 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D221FDCF9AB0052C0E3 /* Api.swift */; };
+		64515D261FDD00FC0052C0E3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D251FDD00FC0052C0E3 /* SignUpViewController.swift */; };
+		64515D281FDD0C170052C0E3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D271FDD0C170052C0E3 /* HomeViewController.swift */; };
+		64515D2C1FDD10DD0052C0E3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */; };
+		64515D301FDD19A80052C0E3 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */; };
+		64515D321FDD1BDC0052C0E3 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D311FDD1BDC0052C0E3 /* Book.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +46,7 @@
 /* Begin PBXFileReference section */
 		64515CDA1FDBF0020052C0E3 /* bookMarketApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookMarketApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64515CDD1FDBF0020052C0E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		64515CDF1FDBF0020052C0E3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		64515CE11FDBF0020052C0E3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		64515CE41FDBF0020052C0E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		64515CE61FDBF0020052C0E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64515CE91FDBF0020052C0E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64515CEB1FDBF0020052C0E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64515CF01FDBF0020052C0E3 /* bookMarketAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookMarketAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +55,19 @@
 		64515CFB1FDBF0030052C0E3 /* bookMarketAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bookMarketAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64515CFF1FDBF0030052C0E3 /* bookMarketAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookMarketAppUITests.swift; sourceTree = "<group>"; };
 		64515D011FDBF0030052C0E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64515D0D1FDBF1C80052C0E3 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		64515D0F1FDBF1EA0052C0E3 /* Sell.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sell.storyboard; sourceTree = "<group>"; };
+		64515D111FDBF20F0052C0E3 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		64515D131FDBF2D20052C0E3 /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		64515D151FDBF3670052C0E3 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		64515D1B1FDCF7E50052C0E3 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		64515D221FDCF9AB0052C0E3 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Api.swift; path = /Users/Tomoya/bookMarketApp/bookMarketApp/Model/Api/Api.swift; sourceTree = "<absolute>"; };
+		64515D241FDD00D00052C0E3 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = SignUp.storyboard; path = /Users/Tomoya/bookMarketApp/bookMarketApp/View/SignUp.storyboard; sourceTree = "<absolute>"; };
+		64515D251FDD00FC0052C0E3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = /Users/Tomoya/bookMarketApp/bookMarketApp/View/SignUpViewController.swift; sourceTree = "<absolute>"; };
+		64515D271FDD0C170052C0E3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = /Users/Tomoya/bookMarketApp/bookMarketApp/View/HomeViewController.swift; sourceTree = "<absolute>"; };
+		64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
+		64515D311FDD1BDC0052C0E3 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				64515CDD1FDBF0020052C0E3 /* AppDelegate.swift */,
-				64515CDF1FDBF0020052C0E3 /* FirstViewController.swift */,
-				64515CE11FDBF0020052C0E3 /* SecondViewController.swift */,
-				64515CE31FDBF0020052C0E3 /* Main.storyboard */,
-				64515CE61FDBF0020052C0E3 /* Assets.xcassets */,
+				64515D171FDCD5A00052C0E3 /* View */,
+				64515D1A1FDCD64E0052C0E3 /* ViewModel */,
+				64515D181FDCD5EE0052C0E3 /* Model */,
 				64515CE81FDBF0020052C0E3 /* LaunchScreen.storyboard */,
 				64515CEB1FDBF0020052C0E3 /* Info.plist */,
 			);
@@ -126,6 +144,49 @@
 				64515D011FDBF0030052C0E3 /* Info.plist */,
 			);
 			path = bookMarketAppUITests;
+			sourceTree = "<group>";
+		};
+		64515D171FDCD5A00052C0E3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				64515D151FDBF3670052C0E3 /* SignInViewController.swift */,
+				64515D131FDBF2D20052C0E3 /* SignIn.storyboard */,
+				64515D251FDD00FC0052C0E3 /* SignUpViewController.swift */,
+				64515D241FDD00D00052C0E3 /* SignUp.storyboard */,
+				64515CE31FDBF0020052C0E3 /* Main.storyboard */,
+				64515D0D1FDBF1C80052C0E3 /* Home.storyboard */,
+				64515D271FDD0C170052C0E3 /* HomeViewController.swift */,
+				64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */,
+				64515D0F1FDBF1EA0052C0E3 /* Sell.storyboard */,
+				64515D111FDBF20F0052C0E3 /* Account.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		64515D181FDCD5EE0052C0E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64515D191FDCD63B0052C0E3 /* Api */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64515D191FDCD63B0052C0E3 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				64515D221FDCF9AB0052C0E3 /* Api.swift */,
+				64515D1B1FDCF7E50052C0E3 /* Users.swift */,
+				64515D311FDD1BDC0052C0E3 /* Book.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		64515D1A1FDCD64E0052C0E3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,8 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				64515CEA1FDBF0020052C0E3 /* LaunchScreen.storyboard in Resources */,
-				64515CE71FDBF0020052C0E3 /* Assets.xcassets in Resources */,
 				64515CE51FDBF0020052C0E3 /* Main.storyboard in Resources */,
+				64515D101FDBF1EA0052C0E3 /* Sell.storyboard in Resources */,
+				64515D121FDBF20F0052C0E3 /* Account.storyboard in Resources */,
+				64515D141FDBF2D20052C0E3 /* SignIn.storyboard in Resources */,
+				64515D0E1FDBF1C80052C0E3 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +326,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64515CE21FDBF0020052C0E3 /* SecondViewController.swift in Sources */,
+				64515D161FDBF3670052C0E3 /* SignInViewController.swift in Sources */,
+				64515D1C1FDCF7E50052C0E3 /* Users.swift in Sources */,
+				64515D231FDCF9AB0052C0E3 /* Api.swift in Sources */,
 				64515CDE1FDBF0020052C0E3 /* AppDelegate.swift in Sources */,
-				64515CE01FDBF0020052C0E3 /* FirstViewController.swift in Sources */,
+				64515D301FDD19A80052C0E3 /* BooksTableViewCell.swift in Sources */,
+				64515D321FDD1BDC0052C0E3 /* Book.swift in Sources */,
+				64515D2C1FDD10DD0052C0E3 /* HomeViewModel.swift in Sources */,
+				64515D261FDD00FC0052C0E3 /* SignUpViewController.swift in Sources */,
+				64515D281FDD0C170052C0E3 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +499,6 @@
 		64515D051FDBF0030052C0E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = bookMarketApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -443,7 +512,6 @@
 		64515D061FDBF0030052C0E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = bookMarketApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

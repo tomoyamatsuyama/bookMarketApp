@@ -2,6 +2,27 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../bookMarketApp/ViewModel/BookViewModel.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Tomoya/bookMarketApp/bookMarketApp/View/BookViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Tomoya/bookMarketApp/bookMarketApp/View/HomeViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Tomoya/bookMarketApp/bookMarketApp/View/SignUpViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Tomoya/bookMarketApp/bookMarketApp/View/SignUp.storyboard">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Tomoya/bookMarketApp/bookMarketApp/Model/Api/Api.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Tomoya/bookMarketApp/bookMarketApp/Assets.xcassets">
+   </FileRef>
+   <FileRef
       location = "self:bookMarketApp.xcodeproj">
    </FileRef>
 </Workspace>
