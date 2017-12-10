@@ -13,7 +13,7 @@
         <!--ログイン-->
         <scene sceneID="fjQ-xo-2Yx">
             <objects>
-                <viewController storyboardIdentifier="SignIn" useStoryboardIdentifierAsRestorationIdentifier="YES" id="arA-IJ-VMW" customClass="SignInViewController" customModule="bookMarketApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="arA-IJ-VMW" customClass="SignInViewController" customModule="bookMarketApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KqT-8N-ukT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="width" constant="200" id="q4y-9X-1ay"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="0.037429042764917875" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

@@ -24,6 +24,7 @@
 		64515D2C1FDD10DD0052C0E3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */; };
 		64515D301FDD19A80052C0E3 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */; };
 		64515D321FDD1BDC0052C0E3 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D311FDD1BDC0052C0E3 /* Book.swift */; };
+		64C9C5FB1FDD867A00D3FC5B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515D241FDD00D00052C0E3 /* SignUp.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -299,6 +300,7 @@
 				64515CEA1FDBF0020052C0E3 /* LaunchScreen.storyboard in Resources */,
 				64515CE51FDBF0020052C0E3 /* Main.storyboard in Resources */,
 				64515D101FDBF1EA0052C0E3 /* Sell.storyboard in Resources */,
+				64C9C5FB1FDD867A00D3FC5B /* SignUp.storyboard in Resources */,
 				64515D121FDBF20F0052C0E3 /* Account.storyboard in Resources */,
 				64515D141FDBF2D20052C0E3 /* SignIn.storyboard in Resources */,
 				64515D0E1FDBF1C80052C0E3 /* Home.storyboard in Resources */,

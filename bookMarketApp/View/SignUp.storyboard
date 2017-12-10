@@ -12,7 +12,7 @@
         <!--新規作成-->
         <scene sceneID="2Uk-Rd-KRu">
             <objects>
-                <viewController storyboardIdentifier="SignUp" title="新規作成" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pj7-Vq-Hjt" customClass="SignUpViewController" customModule="bookMarketApp" sceneMemberID="viewController">
+                <viewController title="新規作成" id="pj7-Vq-Hjt" customClass="SignUpViewController" customModule="bookMarketApp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0vA-3a-YHn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,7 +74,7 @@
                                     <constraint firstAttribute="width" constant="200" id="vvr-Wu-KYh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="1" green="0.056592221469468962" blue="0.0034642185377411483" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>

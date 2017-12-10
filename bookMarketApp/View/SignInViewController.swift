@@ -25,8 +25,6 @@ class SignInViewController: UIViewController {
     private func goToHome(){
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarView = storyboard.instantiateInitialViewController() as! UITabBarController
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeView: HomeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! HomeViewController
         self.present(tabBarView, animated: true, completion: nil)
     }
     
@@ -39,15 +37,15 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction private func createButton(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "SignUp", bundle: Bundle.main)
-        let signUpView: SignUpViewController = storyboard.instantiateViewController(withIdentifier: "SignUp") as! SignUpViewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "SignUp", bundle: nil)
+        let signUpView: SignUpViewController = storyboard.instantiateInitialViewController() as! SignUpViewController
         self.navigationController?.pushViewController(signUpView, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        inputMailAddress.placeholder = "登録メールアドレス"
+        inputPassword.placeholder = "パスワード"
     }
 
     override func didReceiveMemoryWarning() {
