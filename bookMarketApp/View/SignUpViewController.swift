@@ -13,13 +13,13 @@ class SignUpViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBOutlet var errorLabel: UILabel!
-    @IBOutlet var inputMailAddress: UITextField!
-    @IBOutlet var inputPass: UITextField!
-    @IBOutlet var inputConfirmPass: UITextField!
-    @IBOutlet var inputUserName: UITextField!
+    @IBOutlet private var errorLabel: UILabel!
+    @IBOutlet private var inputMailAddress: UITextField!
+    @IBOutlet private var inputPass: UITextField!
+    @IBOutlet private var inputConfirmPass: UITextField!
+    @IBOutlet private var inputUserName: UITextField!
     
-    @IBAction func resisterButton(sender: AnyObject) {
+    @IBAction private func resisterButton(sender: AnyObject) {
         guard let mailAddress = inputMailAddress.text else { return }
         guard let pass = inputPass.text else { return }
         guard let confirmPass = inputConfirmPass.text else { return }
@@ -38,6 +38,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputMailAddress.placeholder = "g0000000@cc.kyoto-su.ac.jp"
+        inputPass.placeholder = "パスワード"
+        inputConfirmPass.placeholder = "確認用パスワード"
+        inputUserName.placeholder = "ユーザ名"
     }
 
     override func didReceiveMemoryWarning() {
