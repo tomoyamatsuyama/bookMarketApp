@@ -24,6 +24,14 @@
 		64515D2C1FDD10DD0052C0E3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */; };
 		64515D301FDD19A80052C0E3 /* BooksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */; };
 		64515D321FDD1BDC0052C0E3 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515D311FDD1BDC0052C0E3 /* Book.swift */; };
+		645EFA6C1FDE1D550059C556 /* Goods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645EFA6B1FDE1D550059C556 /* Goods.storyboard */; };
+		645EFA6E1FDE1D720059C556 /* GoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA6D1FDE1D720059C556 /* GoodsViewController.swift */; };
+		645EFA721FDE26410059C556 /* GoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA711FDE26410059C556 /* GoodsViewModel.swift */; };
+		645EFA741FDE2CAB0059C556 /* ImageDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645EFA731FDE2CAB0059C556 /* ImageDetail.storyboard */; };
+		645EFA761FDE2CC00059C556 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA751FDE2CC00059C556 /* ImageDetailViewController.swift */; };
+		645EFA781FDE31650059C556 /* PurchasedGoods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645EFA771FDE31650059C556 /* PurchasedGoods.storyboard */; };
+		645EFA7A1FDE316F0059C556 /* PurchasedGoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA791FDE316F0059C556 /* PurchasedGoodsViewController.swift */; };
+		645EFA7C1FDE337D0059C556 /* PurchasedGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA7B1FDE337D0059C556 /* PurchasedGoodsViewModel.swift */; };
 		64C9C5FB1FDD867A00D3FC5B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515D241FDD00D00052C0E3 /* SignUp.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +77,14 @@
 		64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTableViewCell.swift; sourceTree = "<group>"; };
 		64515D311FDD1BDC0052C0E3 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		645EFA6B1FDE1D550059C556 /* Goods.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goods.storyboard; sourceTree = "<group>"; };
+		645EFA6D1FDE1D720059C556 /* GoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewController.swift; sourceTree = "<group>"; };
+		645EFA711FDE26410059C556 /* GoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewModel.swift; sourceTree = "<group>"; };
+		645EFA731FDE2CAB0059C556 /* ImageDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImageDetail.storyboard; sourceTree = "<group>"; };
+		645EFA751FDE2CC00059C556 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
+		645EFA771FDE31650059C556 /* PurchasedGoods.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchasedGoods.storyboard; sourceTree = "<group>"; };
+		645EFA791FDE316F0059C556 /* PurchasedGoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedGoodsViewController.swift; sourceTree = "<group>"; };
+		645EFA7B1FDE337D0059C556 /* PurchasedGoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedGoodsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,8 +174,14 @@
 				64515D0D1FDBF1C80052C0E3 /* Home.storyboard */,
 				64515D271FDD0C170052C0E3 /* HomeViewController.swift */,
 				64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */,
+				645EFA6B1FDE1D550059C556 /* Goods.storyboard */,
+				645EFA6D1FDE1D720059C556 /* GoodsViewController.swift */,
+				645EFA731FDE2CAB0059C556 /* ImageDetail.storyboard */,
+				645EFA751FDE2CC00059C556 /* ImageDetailViewController.swift */,
 				64515D0F1FDBF1EA0052C0E3 /* Sell.storyboard */,
 				64515D111FDBF20F0052C0E3 /* Account.storyboard */,
+				645EFA771FDE31650059C556 /* PurchasedGoods.storyboard */,
+				645EFA791FDE316F0059C556 /* PurchasedGoodsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */,
+				645EFA711FDE26410059C556 /* GoodsViewModel.swift */,
+				645EFA7B1FDE337D0059C556 /* PurchasedGoodsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -298,8 +322,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				64515CEA1FDBF0020052C0E3 /* LaunchScreen.storyboard in Resources */,
+				645EFA781FDE31650059C556 /* PurchasedGoods.storyboard in Resources */,
 				64515CE51FDBF0020052C0E3 /* Main.storyboard in Resources */,
+				645EFA741FDE2CAB0059C556 /* ImageDetail.storyboard in Resources */,
 				64515D101FDBF1EA0052C0E3 /* Sell.storyboard in Resources */,
+				645EFA6C1FDE1D550059C556 /* Goods.storyboard in Resources */,
 				64C9C5FB1FDD867A00D3FC5B /* SignUp.storyboard in Resources */,
 				64515D121FDBF20F0052C0E3 /* Account.storyboard in Resources */,
 				64515D141FDBF2D20052C0E3 /* SignIn.storyboard in Resources */,
@@ -328,14 +355,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				645EFA721FDE26410059C556 /* GoodsViewModel.swift in Sources */,
+				645EFA7A1FDE316F0059C556 /* PurchasedGoodsViewController.swift in Sources */,
 				64515D161FDBF3670052C0E3 /* SignInViewController.swift in Sources */,
 				64515D1C1FDCF7E50052C0E3 /* Users.swift in Sources */,
 				64515D231FDCF9AB0052C0E3 /* Api.swift in Sources */,
+				645EFA6E1FDE1D720059C556 /* GoodsViewController.swift in Sources */,
 				64515CDE1FDBF0020052C0E3 /* AppDelegate.swift in Sources */,
 				64515D301FDD19A80052C0E3 /* BooksTableViewCell.swift in Sources */,
+				645EFA761FDE2CC00059C556 /* ImageDetailViewController.swift in Sources */,
 				64515D321FDD1BDC0052C0E3 /* Book.swift in Sources */,
 				64515D2C1FDD10DD0052C0E3 /* HomeViewModel.swift in Sources */,
 				64515D261FDD00FC0052C0E3 /* SignUpViewController.swift in Sources */,
+				645EFA7C1FDE337D0059C556 /* PurchasedGoodsViewModel.swift in Sources */,
 				64515D281FDD0C170052C0E3 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

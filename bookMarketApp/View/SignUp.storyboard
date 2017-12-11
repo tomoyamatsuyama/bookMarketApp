@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l0Q-J4-sXd">
-                                <rect key="frame" x="87" y="94" width="200" height="30"/>
+                                <rect key="frame" x="87" y="86" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="57V-S6-PYt"/>
                                     <constraint firstAttribute="height" constant="30" id="VpS-cv-AYP"/>
@@ -28,7 +29,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tB2-Fe-W52">
-                                <rect key="frame" x="87" y="149" width="200" height="30"/>
+                                <rect key="frame" x="87" y="141" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="d7r-dr-F8l"/>
                                     <constraint firstAttribute="width" constant="200" id="g8x-6X-TxE"/>
@@ -38,7 +39,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WAt-SO-TV9">
-                                <rect key="frame" x="87" y="204" width="200" height="30"/>
+                                <rect key="frame" x="87" y="196" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="2Js-yb-lpn"/>
                                     <constraint firstAttribute="height" constant="30" id="K1L-NP-4dP"/>
@@ -48,7 +49,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hrg-WA-wNx">
-                                <rect key="frame" x="87" y="259" width="200" height="30"/>
+                                <rect key="frame" x="87" y="251" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="bsi-Km-zdm"/>
                                     <constraint firstAttribute="height" constant="30" id="dJN-0t-jUh"/>
@@ -58,7 +59,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WW-i4-OmR">
-                                <rect key="frame" x="167" y="314" width="40" height="30"/>
+                                <rect key="frame" x="167" y="306" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="amg-cZ-KZ9"/>
                                 </constraints>
@@ -68,9 +69,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-5p-Q8y">
-                                <rect key="frame" x="88" y="67" width="200" height="21"/>
+                                <rect key="frame" x="88" y="35" width="200" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="GSm-gR-lak"/>
+                                    <constraint firstAttribute="height" constant="45" id="GSm-gR-lak"/>
                                     <constraint firstAttribute="width" constant="200" id="vvr-Wu-KYh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -91,7 +92,7 @@
                             <constraint firstItem="4WW-i4-OmR" firstAttribute="top" secondItem="hrg-WA-wNx" secondAttribute="bottom" constant="25" id="bRh-gv-aAJ"/>
                             <constraint firstItem="tB2-Fe-W52" firstAttribute="top" secondItem="l0Q-J4-sXd" secondAttribute="bottom" constant="25" id="eEL-9O-wUQ"/>
                             <constraint firstItem="WAt-SO-TV9" firstAttribute="leading" secondItem="hrg-WA-wNx" secondAttribute="leading" id="fcY-c7-H2N"/>
-                            <constraint firstItem="F4M-5p-Q8y" firstAttribute="top" secondItem="yKo-i4-M5f" secondAttribute="top" constant="47" id="kYF-0z-d0F"/>
+                            <constraint firstItem="F4M-5p-Q8y" firstAttribute="top" secondItem="yKo-i4-M5f" secondAttribute="top" constant="15" id="kYF-0z-d0F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yKo-i4-M5f"/>
                     </view>

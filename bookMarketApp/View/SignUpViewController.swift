@@ -31,9 +31,10 @@ class SignUpViewController: UIViewController {
         if errorText.contains("error") {
             self.errorLabel.text = "正確な値を入力してください"
         } else {
-//            nextPage()
+            self.errorLabel.text = "登録完了。\n戻ってログインしてください。"
+            self.errorLabel.numberOfLines = 0
+            self.errorLabel.textColor = UIColor.blue
         }
-
     }
     
     override func viewDidLoad() {

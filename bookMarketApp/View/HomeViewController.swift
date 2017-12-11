@@ -19,6 +19,13 @@ class HomeViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func goToGoods(_ currentBookId: Int){
+        let storyboard: UIStoryboard = UIStoryboard(name: "Goods", bundle: nil)
+        let goodsView: GoodsViewController = storyboard.instantiateInitialViewController() as! GoodsViewController
+        goodsView.selectedBookDetailData = Book.getBookDetail(bookId: currentBookId)
+        self.navigationController?.pushViewController(goodsView, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,11 +54,11 @@ class HomeViewController: UIViewController{
     }
 }
 
-//extension HomeViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let currentBookId: Int = booksData.idLists[indexPath.row]
-//        tableView.deselectRow(at: indexPath, animated: true)
-////        self.performSegue(withIdentifier: "NextToGoods", sender: currentBookId)
-//    }
-//}
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentBookId: Int = booksData.idLists[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        goToGoods(currentBookId)
+    }
+}
 
