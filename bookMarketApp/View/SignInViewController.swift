@@ -15,7 +15,6 @@ class SignInViewController: UIViewController {
     @IBOutlet weak private var inputMailAddress: UITextField!
     @IBOutlet weak private var inputPassword: UITextField!
     
-    
     @IBAction func signInButton(_ sender: Any) {
         guard let mailAddress = inputMailAddress.text else { return }
         guard let password = inputPassword.text else { return }
@@ -50,6 +49,5 @@ class SignInViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

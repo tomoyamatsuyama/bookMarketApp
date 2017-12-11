@@ -14,7 +14,7 @@ extension HomeViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = bind(cell: tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! BooksTableViewCell, index: indexPath.row)
+        let cell = self.bind(cell: tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! BooksTableViewCell, index: indexPath.row)
         return cell
     }
 }
