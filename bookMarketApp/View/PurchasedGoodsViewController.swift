@@ -15,6 +15,15 @@ class PurchasedGoodsViewController: UIViewController {
     @IBOutlet weak private var imageView3: UIImageView!
     @IBOutlet weak private var purchasedTableView: UITableView!
     
+    @IBAction func goToMessage(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Message", bundle: nil)
+        let messageView = storyboard.instantiateInitialViewController() as! MessageViewController
+        let roomId = MessageRoom.getMessageRoomId(bookId: purchasedBookDetailData.id)
+        messageView.messageData = MessageRoom.getMessage(messageRoomId: roomId)
+        messageView.roomId = roomId
+        self.navigationController?.pushViewController(messageView, animated: true)
+    }
+    
     private func goToImageShow(image: UIImage){
         let storyboard: UIStoryboard = UIStoryboard(name: "ImageDetail", bundle: nil)
         let imageDetailView: ImageDetailViewController = storyboard.instantiateInitialViewController() as! ImageDetailViewController
@@ -58,6 +67,7 @@ class PurchasedGoodsViewController: UIViewController {
         if let imageString2: String = purchasedBookDetailData.imageLists[1] {
             self.imageView2.image = imageSet(imageUrlString: imageString2)
         }
+        
         if let imageString3: String = purchasedBookDetailData.imageLists[2] {
             self.imageView3.image = imageSet(imageUrlString: imageString3)
         }

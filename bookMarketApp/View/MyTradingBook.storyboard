@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Trading Book View Controller-->
+        <!--取引中一覧-->
         <scene sceneID="Gak-SL-m6R">
             <objects>
-                <viewController id="5ls-nG-apN" customClass="MyTradingBookViewController" customModule="bookMarketApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="取引中一覧" id="5ls-nG-apN" customClass="MyTradingBookViewController" customModule="bookMarketApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iDX-u1-8v3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3HU-ms-lkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-202.40000000000001" y="175.86206896551727"/>
+            <point key="canvasLocation" x="-639" y="121"/>
         </scene>
     </scenes>
 </document>

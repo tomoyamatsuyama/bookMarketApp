@@ -58,11 +58,14 @@
                                 <rect key="frame" x="149" y="466" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="メッセージ"/>
+                                <connections>
+                                    <action selector="goToMessage:" destination="dkK-nW-SNj" eventType="touchUpInside" id="J5g-WX-Haj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cH-Xa-4E0">
-                                <rect key="frame" x="172" y="504" width="31" height="30"/>
+                                <rect key="frame" x="157" y="504" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="購入"/>
+                                <state key="normal" title="取引完了"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0V-ih-ZKh">
                                 <rect key="frame" x="172" y="542" width="30" height="30"/>
