@@ -100,6 +100,7 @@ struct BookDetailData {
 }
 
 class Book{
+    static var currentUserId: Int = 0
     static func getAll() -> BooksData{
         var booksData: BooksData = BooksData()
         let request = Api.getRequet(url: "http://localhost:3000/books.json")
@@ -119,6 +120,7 @@ class Book{
                         booksData.imageLists["\(object.id)"] = [object.image1.url!, object.image2.url, object.image3.url]
                     }
                 }
+                currentUserId = objects.CurrentUser.id
             } catch let e {
                 print(e)
             }
@@ -128,7 +130,7 @@ class Book{
         return booksData
     }
     
-    static func getBookDetail(bookId: Int) -> BookDetailData {
+    static func getBookDetail(bookId: Int) -> BookDetailData{
         var bookDetailData: BookDetailData = BookDetailData()
         let request = Api.getRequet(url: "http://localhost:3000/books/\(bookId).json")
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -155,7 +157,7 @@ class Book{
     }
     
     static func postPurchased(bookName: String, bookId: String, image1: String) {
-        let request = Api.postRequest(url: "http://localhost:3000/rooms.json")
+        let request = Api.makeRequest(url: "http://localhost:3000/rooms.json")
         let params: [String:Any] = ["room":["name":bookName, "book_id": bookId, "image1": image1]]
         do{
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])

@@ -32,6 +32,16 @@
 		645EFA781FDE31650059C556 /* PurchasedGoods.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645EFA771FDE31650059C556 /* PurchasedGoods.storyboard */; };
 		645EFA7A1FDE316F0059C556 /* PurchasedGoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA791FDE316F0059C556 /* PurchasedGoodsViewController.swift */; };
 		645EFA7C1FDE337D0059C556 /* PurchasedGoodsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA7B1FDE337D0059C556 /* PurchasedGoodsViewModel.swift */; };
+		645EFA7E1FDE42C80059C556 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA7D1FDE42C80059C556 /* AccountViewController.swift */; };
+		645EFA801FDE43460059C556 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA7F1FDE43460059C556 /* AccountViewModel.swift */; };
+		645EFA821FDE450B0059C556 /* UserProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645EFA811FDE450B0059C556 /* UserProfile.storyboard */; };
+		645EFA841FDE45180059C556 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA831FDE45180059C556 /* UserProfileViewController.swift */; };
+		645EFA861FDE579C0059C556 /* MySellingBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645EFA851FDE579C0059C556 /* MySellingBook.storyboard */; };
+		645EFA881FDE57AC0059C556 /* MyTradingBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 645EFA871FDE57AC0059C556 /* MyTradingBook.storyboard */; };
+		645EFA8A1FDE57BE0059C556 /* MySellingBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA891FDE57BE0059C556 /* MySellingBookViewController.swift */; };
+		645EFA8C1FDE57F90059C556 /* MyTradingBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA8B1FDE57F90059C556 /* MyTradingBookViewController.swift */; };
+		645EFA8E1FDE5E3E0059C556 /* MySellingBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA8D1FDE5E3E0059C556 /* MySellingBookViewModel.swift */; };
+		645EFA901FDE5E4E0059C556 /* MyTradingBoookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645EFA8F1FDE5E4E0059C556 /* MyTradingBoookViewModel.swift */; };
 		64C9C5FB1FDD867A00D3FC5B /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515D241FDD00D00052C0E3 /* SignUp.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +95,16 @@
 		645EFA771FDE31650059C556 /* PurchasedGoods.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchasedGoods.storyboard; sourceTree = "<group>"; };
 		645EFA791FDE316F0059C556 /* PurchasedGoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedGoodsViewController.swift; sourceTree = "<group>"; };
 		645EFA7B1FDE337D0059C556 /* PurchasedGoodsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedGoodsViewModel.swift; sourceTree = "<group>"; };
+		645EFA7D1FDE42C80059C556 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		645EFA7F1FDE43460059C556 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		645EFA811FDE450B0059C556 /* UserProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfile.storyboard; sourceTree = "<group>"; };
+		645EFA831FDE45180059C556 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		645EFA851FDE579C0059C556 /* MySellingBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MySellingBook.storyboard; sourceTree = "<group>"; };
+		645EFA871FDE57AC0059C556 /* MyTradingBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyTradingBook.storyboard; sourceTree = "<group>"; };
+		645EFA891FDE57BE0059C556 /* MySellingBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellingBookViewController.swift; sourceTree = "<group>"; };
+		645EFA8B1FDE57F90059C556 /* MyTradingBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTradingBookViewController.swift; sourceTree = "<group>"; };
+		645EFA8D1FDE5E3E0059C556 /* MySellingBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellingBookViewModel.swift; sourceTree = "<group>"; };
+		645EFA8F1FDE5E4E0059C556 /* MyTradingBoookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTradingBoookViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,12 +196,19 @@
 				64515D2F1FDD19A80052C0E3 /* BooksTableViewCell.swift */,
 				645EFA6B1FDE1D550059C556 /* Goods.storyboard */,
 				645EFA6D1FDE1D720059C556 /* GoodsViewController.swift */,
+				645EFA771FDE31650059C556 /* PurchasedGoods.storyboard */,
+				645EFA791FDE316F0059C556 /* PurchasedGoodsViewController.swift */,
 				645EFA731FDE2CAB0059C556 /* ImageDetail.storyboard */,
 				645EFA751FDE2CC00059C556 /* ImageDetailViewController.swift */,
 				64515D0F1FDBF1EA0052C0E3 /* Sell.storyboard */,
 				64515D111FDBF20F0052C0E3 /* Account.storyboard */,
-				645EFA771FDE31650059C556 /* PurchasedGoods.storyboard */,
-				645EFA791FDE316F0059C556 /* PurchasedGoodsViewController.swift */,
+				645EFA7D1FDE42C80059C556 /* AccountViewController.swift */,
+				645EFA811FDE450B0059C556 /* UserProfile.storyboard */,
+				645EFA831FDE45180059C556 /* UserProfileViewController.swift */,
+				645EFA851FDE579C0059C556 /* MySellingBook.storyboard */,
+				645EFA891FDE57BE0059C556 /* MySellingBookViewController.swift */,
+				645EFA871FDE57AC0059C556 /* MyTradingBook.storyboard */,
+				645EFA8B1FDE57F90059C556 /* MyTradingBookViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,6 +237,9 @@
 				64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */,
 				645EFA711FDE26410059C556 /* GoodsViewModel.swift */,
 				645EFA7B1FDE337D0059C556 /* PurchasedGoodsViewModel.swift */,
+				645EFA7F1FDE43460059C556 /* AccountViewModel.swift */,
+				645EFA8D1FDE5E3E0059C556 /* MySellingBookViewModel.swift */,
+				645EFA8F1FDE5E4E0059C556 /* MyTradingBoookViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -322,7 +352,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				64515CEA1FDBF0020052C0E3 /* LaunchScreen.storyboard in Resources */,
+				645EFA881FDE57AC0059C556 /* MyTradingBook.storyboard in Resources */,
 				645EFA781FDE31650059C556 /* PurchasedGoods.storyboard in Resources */,
+				645EFA861FDE579C0059C556 /* MySellingBook.storyboard in Resources */,
 				64515CE51FDBF0020052C0E3 /* Main.storyboard in Resources */,
 				645EFA741FDE2CAB0059C556 /* ImageDetail.storyboard in Resources */,
 				64515D101FDBF1EA0052C0E3 /* Sell.storyboard in Resources */,
@@ -331,6 +363,7 @@
 				64515D121FDBF20F0052C0E3 /* Account.storyboard in Resources */,
 				64515D141FDBF2D20052C0E3 /* SignIn.storyboard in Resources */,
 				64515D0E1FDBF1C80052C0E3 /* Home.storyboard in Resources */,
+				645EFA821FDE450B0059C556 /* UserProfile.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,16 +389,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				645EFA721FDE26410059C556 /* GoodsViewModel.swift in Sources */,
+				645EFA8C1FDE57F90059C556 /* MyTradingBookViewController.swift in Sources */,
 				645EFA7A1FDE316F0059C556 /* PurchasedGoodsViewController.swift in Sources */,
 				64515D161FDBF3670052C0E3 /* SignInViewController.swift in Sources */,
 				64515D1C1FDCF7E50052C0E3 /* Users.swift in Sources */,
 				64515D231FDCF9AB0052C0E3 /* Api.swift in Sources */,
+				645EFA8E1FDE5E3E0059C556 /* MySellingBookViewModel.swift in Sources */,
+				645EFA841FDE45180059C556 /* UserProfileViewController.swift in Sources */,
+				645EFA901FDE5E4E0059C556 /* MyTradingBoookViewModel.swift in Sources */,
 				645EFA6E1FDE1D720059C556 /* GoodsViewController.swift in Sources */,
 				64515CDE1FDBF0020052C0E3 /* AppDelegate.swift in Sources */,
+				645EFA8A1FDE57BE0059C556 /* MySellingBookViewController.swift in Sources */,
 				64515D301FDD19A80052C0E3 /* BooksTableViewCell.swift in Sources */,
 				645EFA761FDE2CC00059C556 /* ImageDetailViewController.swift in Sources */,
 				64515D321FDD1BDC0052C0E3 /* Book.swift in Sources */,
+				645EFA801FDE43460059C556 /* AccountViewModel.swift in Sources */,
 				64515D2C1FDD10DD0052C0E3 /* HomeViewModel.swift in Sources */,
+				645EFA7E1FDE42C80059C556 /* AccountViewController.swift in Sources */,
 				64515D261FDD00FC0052C0E3 /* SignUpViewController.swift in Sources */,
 				645EFA7C1FDE337D0059C556 /* PurchasedGoodsViewModel.swift in Sources */,
 				64515D281FDD0C170052C0E3 /* HomeViewController.swift in Sources */,

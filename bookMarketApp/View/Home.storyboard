@@ -104,7 +104,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="bwD-Hy-0sg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="CzO-IX-Y3f"/>
+                    <tabBarItem key="tabBarItem" badgeValue="Home" systemItem="favorites" id="CzO-IX-Y3f"/>
                     <navigationItem key="navigationItem" title="ホーム" id="UHT-nh-dXY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

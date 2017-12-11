@@ -19,13 +19,13 @@ class Api{
         return request
     }
     
-    static func postRequest(url: String) -> NSMutableURLRequest{
+    static func makeRequest(url: String, status: String = "POST") -> NSMutableURLRequest{
         guard let url = URL(string: url) else { return NSMutableURLRequest() }
         guard let authUrl = URL(string: "http://localhost:3000/users/sign_in.json") else { return NSMutableURLRequest() }
         let cookies = HTTPCookieStorage.shared.cookies(for: authUrl as URL)
         let header: [String : String]  = HTTPCookie.requestHeaderFields(with: cookies!)
-        var request = NSMutableURLRequest(url: url)
-        request.httpMethod = "POST"
+        let request = NSMutableURLRequest(url: url)
+        request.httpMethod = status
         request.setValue(header["Cookie"], forHTTPHeaderField: "Cookie")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")

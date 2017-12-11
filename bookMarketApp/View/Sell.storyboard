@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="K5M-RZ-E8F"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="fHQ-FT-SOw"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="fHQ-FT-SOw"/>
                     <navigationItem key="navigationItem" title="出品" id="aCc-KI-6T3"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>

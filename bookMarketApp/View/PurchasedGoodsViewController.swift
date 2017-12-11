@@ -54,7 +54,7 @@ class PurchasedGoodsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = purchasedBookDetailData.name
-        self.imageView1.image = imageSet(imageUrlString: purchasedBookDetailData.imageLists[0]!) //出品時に1枚は必須なのでforce unwrap
+        self.imageView1.image = imageSet(imageUrlString: purchasedBookDetailData.imageLists[0]!)
         if let imageString2: String = purchasedBookDetailData.imageLists[1] {
             self.imageView2.image = imageSet(imageUrlString: imageString2)
         }
