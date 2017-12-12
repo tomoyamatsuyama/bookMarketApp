@@ -165,14 +165,34 @@ class Book{
             let config = URLSessionConfiguration.default
             let session = URLSession(configuration: config)
             let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
-                if respData != nil {
-                    let text = String(data: respData!, encoding: .utf8)
-                }
+                
             })
             task.resume()
         }catch{
             print(error.localizedDescription)
         }
         Thread.sleep(forTimeInterval: 0.2)
+    }
+    
+    static func finishTrade(buyId: Int) -> String {
+        var errorText: String = ""
+        let request = Api.makeRequest(url: "http://localhost:3000/buys/\(buyId).json", status: "DELETE")
+        let params: [String:String?] = ["id": "\(buyId)"]
+        do{
+            let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
+            request.httpBody = jsonData
+            let config = URLSessionConfiguration.default
+            let session = URLSession(configuration: config)
+            let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
+                if respData != nil {
+                    errorText = String(data: respData!, encoding: .utf8)!
+                }
+            })
+            task.resume()
+            Thread.sleep(forTimeInterval: 0.2)
+        }catch{
+            errorText = error.localizedDescription
+        }
+        return errorText
     }
 }

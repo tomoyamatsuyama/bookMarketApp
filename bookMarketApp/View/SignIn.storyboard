@@ -79,6 +79,9 @@
                             <constraint firstItem="Ebl-Ga-bl7" firstAttribute="centerX" secondItem="KqT-8N-ukT" secondAttribute="centerX" id="xlN-gv-j51"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7ZL-J1-2bP"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ihe-hS-S0f" appends="YES" id="SuG-cT-Gjr"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="ログイン" id="8oG-GF-WNd"/>
                     <connections>
@@ -88,6 +91,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYQ-Di-5QJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ihe-hS-S0f">
+                    <connections>
+                        <action selector="touchGesture:" destination="arA-IJ-VMW" id="STA-re-sxx"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="69.599999999999994" y="-246.02698650674665"/>
         </scene>

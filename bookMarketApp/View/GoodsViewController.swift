@@ -15,7 +15,17 @@ class GoodsViewController: UIViewController {
     @IBOutlet weak private var imageView3: UIImageView!
     @IBOutlet weak private var goodsTableView: UITableView!
     
+    @IBAction func rightSwiped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func commentButton(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Comment", bundle: nil)
+        let commentView: CommentViewController = storyboard.instantiateInitialViewController() as! CommentViewController
+        commentView.commentData = CommentRoom.getCommentRoom(commentRoomId: selectedBookDetailData.commentRoomId)
+        commentView.roomId = selectedBookDetailData.commentRoomId
+        commentView.bookId = selectedBookDetailData.id
+        self.navigationController?.pushViewController(commentView, animated: true)
     }
     
     @IBAction func buyButton(_ sender: Any) {
@@ -31,7 +41,7 @@ class GoodsViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func GoToPurchased(){
+    private func GoToPurchased(){
         Book.postPurchased(bookName: selectedBookDetailData.name, bookId: "\(selectedBookDetailData.id)", image1: selectedBookDetailData.imageLists[0]!)
         let storyboard: UIStoryboard = UIStoryboard(name: "PurchasedGoods", bundle: nil)
         if let purchasedGoodsView: PurchasedGoodsViewController = storyboard.instantiateInitialViewController() as? PurchasedGoodsViewController {
@@ -90,5 +100,11 @@ class GoodsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension GoodsViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

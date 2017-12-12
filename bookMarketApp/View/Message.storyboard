@@ -13,7 +13,7 @@
         <!--メッセージ-->
         <scene sceneID="jcY-mn-FGg">
             <objects>
-                <viewController title="メッセージ" id="kFi-L4-NPj" customClass="MessageViewController" customModule="bookMarketApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="メッセージ" hidesBottomBarWhenPushed="YES" id="kFi-L4-NPj" customClass="MessageViewController" customModule="bookMarketApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="REg-LZ-Ctb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,8 +24,37 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsC-D2-DEu">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JBR-8P-VbZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="556"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" id="Xcn-DD-rlj">
+                                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xcn-DD-rlj" id="YOO-Z2-z0P">
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="kFi-L4-NPj" id="XMC-AN-ADS"/>
+                                                    <outlet property="delegate" destination="kFi-L4-NPj" id="wHM-Fn-upl"/>
+                                                </connections>
+                                            </tableView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-dF-aj7">
+                                                <rect key="frame" x="316" y="560" width="53" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="53" id="wy4-UN-QbE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <state key="normal" title="投稿"/>
+                                                <connections>
+                                                    <action selector="sendMessage:" destination="kFi-L4-NPj" eventType="touchUpInside" id="dO0-fp-sBk"/>
+                                                </connections>
+                                            </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TA8-Re-mHq">
-                                                <rect key="frame" x="5" y="568" width="306" height="30"/>
+                                                <rect key="frame" x="5" y="565" width="306" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="2CC-sS-B0S"/>
                                                     <constraint firstAttribute="width" constant="306" id="VcR-qe-iec"/>
@@ -37,41 +66,12 @@
                                                     <outlet property="delegate" destination="kFi-L4-NPj" id="EpH-1F-zuM"/>
                                                 </connections>
                                             </textField>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JBR-8P-VbZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" id="Xcn-DD-rlj">
-                                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                                        <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xcn-DD-rlj" id="YOO-Z2-z0P">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                        </tableViewCellContentView>
-                                                    </tableViewCell>
-                                                </prototypes>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="kFi-L4-NPj" id="XMC-AN-ADS"/>
-                                                    <outlet property="delegate" destination="kFi-L4-NPj" id="wHM-Fn-upl"/>
-                                                </connections>
-                                            </tableView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-dF-aj7">
-                                                <rect key="frame" x="316" y="564" width="53" height="34"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="53" id="wy4-UN-QbE"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" title="投稿"/>
-                                                <connections>
-                                                    <action selector="sendMessage:" destination="kFi-L4-NPj" eventType="touchUpInside" id="dO0-fp-sBk"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.67443289974619292" green="0.67443289974619292" blue="0.67443289974619292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="TA8-Re-mHq" secondAttribute="bottom" constant="5" id="54e-bk-aYV"/>
-                                            <constraint firstItem="TA8-Re-mHq" firstAttribute="top" secondItem="JBR-8P-VbZ" secondAttribute="bottom" constant="8" id="B9Q-8l-jLf"/>
+                                            <constraint firstAttribute="bottom" secondItem="TA8-Re-mHq" secondAttribute="bottom" constant="8" id="54e-bk-aYV"/>
+                                            <constraint firstItem="TA8-Re-mHq" firstAttribute="top" secondItem="JBR-8P-VbZ" secondAttribute="bottom" constant="9" id="B9Q-8l-jLf"/>
                                             <constraint firstItem="TA8-Re-mHq" firstAttribute="leading" secondItem="CsC-D2-DEu" secondAttribute="leading" constant="5" id="DfR-qs-N1P"/>
                                             <constraint firstAttribute="trailing" secondItem="JBR-8P-VbZ" secondAttribute="trailing" id="TM9-E0-TOC"/>
                                             <constraint firstItem="0u4-dF-aj7" firstAttribute="top" secondItem="JBR-8P-VbZ" secondAttribute="bottom" constant="4" id="X6P-Un-s5p"/>
@@ -85,21 +85,21 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="leading" secondItem="42K-83-ZoX" secondAttribute="leading" id="4xL-ed-Z14"/>
-                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="centerY" secondItem="42K-83-ZoX" secondAttribute="centerY" id="5Cv-9v-UBL"/>
-                                    <constraint firstAttribute="bottom" secondItem="CsC-D2-DEu" secondAttribute="bottom" id="Wl4-my-YT5"/>
-                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="centerX" secondItem="42K-83-ZoX" secondAttribute="centerX" id="cYK-DO-rd3"/>
-                                    <constraint firstAttribute="trailing" secondItem="CsC-D2-DEu" secondAttribute="trailing" id="l8d-jX-vEg"/>
-                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="top" secondItem="42K-83-ZoX" secondAttribute="top" id="yCA-BI-8Mg"/>
+                                    <constraint firstAttribute="bottom" secondItem="CsC-D2-DEu" secondAttribute="bottom" id="AaH-Ru-gl1"/>
+                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="top" secondItem="42K-83-ZoX" secondAttribute="top" id="F14-OJ-XWd"/>
+                                    <constraint firstAttribute="trailing" secondItem="CsC-D2-DEu" secondAttribute="trailing" id="YCG-Ex-JL3"/>
+                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="centerX" secondItem="42K-83-ZoX" secondAttribute="centerX" id="iEI-Yp-pX1"/>
+                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="centerY" secondItem="42K-83-ZoX" secondAttribute="centerY" id="mDp-a3-UzH"/>
+                                    <constraint firstItem="CsC-D2-DEu" firstAttribute="leading" secondItem="42K-83-ZoX" secondAttribute="leading" id="vV7-Ms-URd"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="42K-83-ZoX" firstAttribute="leading" secondItem="iWH-sG-IJe" secondAttribute="leading" id="Al5-TO-9xz"/>
-                            <constraint firstItem="42K-83-ZoX" firstAttribute="bottom" secondItem="iWH-sG-IJe" secondAttribute="bottom" id="Ruq-3F-b5h"/>
-                            <constraint firstItem="42K-83-ZoX" firstAttribute="top" secondItem="iWH-sG-IJe" secondAttribute="top" id="cgc-xT-vyc"/>
-                            <constraint firstItem="42K-83-ZoX" firstAttribute="trailing" secondItem="iWH-sG-IJe" secondAttribute="trailing" id="cqm-XH-4yE"/>
+                            <constraint firstItem="42K-83-ZoX" firstAttribute="bottom" secondItem="iWH-sG-IJe" secondAttribute="bottom" id="2dU-hv-J8c"/>
+                            <constraint firstItem="42K-83-ZoX" firstAttribute="trailing" secondItem="iWH-sG-IJe" secondAttribute="trailing" id="A10-ti-9mX"/>
+                            <constraint firstItem="42K-83-ZoX" firstAttribute="top" secondItem="iWH-sG-IJe" secondAttribute="top" id="fvG-lI-j4W"/>
+                            <constraint firstItem="42K-83-ZoX" firstAttribute="leading" secondItem="iWH-sG-IJe" secondAttribute="leading" id="j1Y-Ft-IK6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iWH-sG-IJe"/>
                     </view>

@@ -60,7 +60,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="コメント"/>
                                 <connections>
-                                    <action selector="commentButton:" destination="fu8-Zf-8hq" eventType="touchUpInside" id="Kig-z3-RqF"/>
+                                    <action selector="commentButton:" destination="fu8-Zf-8hq" eventType="touchUpInside" id="ZM3-Pf-d0C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbg-8w-pxr">
@@ -77,6 +77,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="8yK-DQ-XqG" firstAttribute="leading" secondItem="EOS-hx-XJN" secondAttribute="trailing" constant="22" id="B8a-ml-Enn"/>
                             <constraint firstItem="EOS-hx-XJN" firstAttribute="centerX" secondItem="i6C-0R-tcK" secondAttribute="centerX" id="Cqg-eV-oNF"/>
@@ -91,6 +92,9 @@
                             <constraint firstItem="MVY-Vk-QqL" firstAttribute="top" secondItem="DkS-Ex-mh0" secondAttribute="top" constant="7" id="xEV-j6-5KT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DkS-Ex-mh0"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cWF-7J-mdF" appends="YES" id="0cR-Ti-lDd"/>
+                        </connections>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -103,8 +107,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyW-k5-mv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="cWF-7J-mdF">
+                    <connections>
+                        <action selector="rightSwiped:" destination="fu8-Zf-8hq" id="qed-6x-ntt"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-50.399999999999999" y="57.121439280359823"/>
+            <point key="canvasLocation" x="-28" y="272"/>
         </scene>
     </scenes>
 </document>
