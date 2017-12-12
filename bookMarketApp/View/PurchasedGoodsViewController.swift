@@ -15,6 +15,10 @@ class PurchasedGoodsViewController: UIViewController {
     @IBOutlet weak private var imageView3: UIImageView!
     @IBOutlet weak private var purchasedTableView: UITableView!
     
+    @IBAction private func rightSwiped(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     @IBAction func goToMessage(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Message", bundle: nil)
         let messageView = storyboard.instantiateInitialViewController() as! MessageViewController
@@ -59,11 +63,34 @@ class PurchasedGoodsViewController: UIViewController {
         }
         return UIImage()
     }
+    
+    @IBAction func tranzactionConpleteButton(_ sender: Any) {
+        transactionConplete()
+    }
+    private func transactionConplete(){
+        guard let buyId = purchasedBookDetailData.buyId else { return }
+        let errorText = Book.finishTrade(buyId: buyId)
+        if errorText.contains("error"){
+            return
+        } else {
+            goToHome()
+        }
+    }
+    
+    
+    
+    private func goToHome(){
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainView = mainStoryboard.instantiateInitialViewController() as! UITabBarController
+        self.present(mainView, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         self.navigationItem.title = purchasedBookDetailData.name
         self.imageView1.image = imageSet(imageUrlString: purchasedBookDetailData.imageLists[0]!)
+        
         if let imageString2: String = purchasedBookDetailData.imageLists[1] {
             self.imageView2.image = imageSet(imageUrlString: imageString2)
         }
@@ -75,5 +102,11 @@ class PurchasedGoodsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+}
+
+extension PurchasedGoodsViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

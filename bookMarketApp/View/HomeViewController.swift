@@ -14,12 +14,9 @@ class HomeViewController: UIViewController{
     var booksData: BooksData = Book.getAll()
     private let refreshControl = UIRefreshControl()
     
-    func reloadData(){
-        booksData = Book.getAll()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        booksData = Book.getAll()
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshControlValueChanged(sender:)), for: .valueChanged)
     }

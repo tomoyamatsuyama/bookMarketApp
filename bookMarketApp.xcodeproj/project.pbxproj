@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6436ACE31FDF60D000933569 /* CommentRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6436ACE21FDF60D000933569 /* CommentRoom.swift */; };
+		64431C4F1FDF63F000F2E544 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64431C4E1FDF63F000F2E544 /* CommentViewModel.swift */; };
 		64515CDE1FDBF0020052C0E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64515CDD1FDBF0020052C0E3 /* AppDelegate.swift */; };
 		64515CE51FDBF0020052C0E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515CE31FDBF0020052C0E3 /* Main.storyboard */; };
 		64515CEA1FDBF0020052C0E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64515CE81FDBF0020052C0E3 /* LaunchScreen.storyboard */; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6436ACE21FDF60D000933569 /* CommentRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRoom.swift; sourceTree = "<group>"; };
+		64431C4E1FDF63F000F2E544 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		64515CDA1FDBF0020052C0E3 /* bookMarketApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bookMarketApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64515CDD1FDBF0020052C0E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64515CE41FDBF0020052C0E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 				64515D1B1FDCF7E50052C0E3 /* Users.swift */,
 				64515D311FDD1BDC0052C0E3 /* Book.swift */,
 				645EFA9B1FDED7820059C556 /* MessageRoom.swift */,
+				6436ACE21FDF60D000933569 /* CommentRoom.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 			children = (
 				64515D2B1FDD10DD0052C0E3 /* HomeViewModel.swift */,
 				645EFA711FDE26410059C556 /* GoodsViewModel.swift */,
+				64431C4E1FDF63F000F2E544 /* CommentViewModel.swift */,
 				645EFA7B1FDE337D0059C556 /* PurchasedGoodsViewModel.swift */,
 				645EFA991FDED6F60059C556 /* MessageViewModel.swift */,
 				645EFA7F1FDE43460059C556 /* AccountViewModel.swift */,
@@ -426,9 +432,11 @@
 				645EFA761FDE2CC00059C556 /* ImageDetailViewController.swift in Sources */,
 				64515D321FDD1BDC0052C0E3 /* Book.swift in Sources */,
 				645EFA981FDE81AB0059C556 /* MessageViewController.swift in Sources */,
+				64431C4F1FDF63F000F2E544 /* CommentViewModel.swift in Sources */,
 				645EFA801FDE43460059C556 /* AccountViewModel.swift in Sources */,
 				64515D2C1FDD10DD0052C0E3 /* HomeViewModel.swift in Sources */,
 				645EFA7E1FDE42C80059C556 /* AccountViewController.swift in Sources */,
+				6436ACE31FDF60D000933569 /* CommentRoom.swift in Sources */,
 				64515D261FDD00FC0052C0E3 /* SignUpViewController.swift in Sources */,
 				645EFA7C1FDE337D0059C556 /* PurchasedGoodsViewModel.swift in Sources */,
 				645EFA9C1FDED7820059C556 /* MessageRoom.swift in Sources */,

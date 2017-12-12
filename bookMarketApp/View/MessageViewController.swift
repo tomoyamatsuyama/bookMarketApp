@@ -67,8 +67,8 @@ class MessageViewController: UIViewController {
         if let userInfo = notification.userInfo,
             let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let inset = keyboardFrame.height
-            scrollView.contentInset.bottom = inset
-            scrollView.scrollIndicatorInsets.bottom = inset
+            scrollView.contentInset.bottom = inset + 8.0
+            scrollView.scrollIndicatorInsets.bottom = inset + 8.0
         }
     }
     
@@ -86,5 +86,11 @@ class MessageViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension MessageViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

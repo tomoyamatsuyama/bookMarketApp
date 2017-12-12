@@ -14,6 +14,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak private var inputMailAddress: UITextField!
     @IBOutlet weak private var inputPassword: UITextField!
+    @IBAction func touchGesture(_ sender: Any) {
+        self.view.endEditing(true)
+    }
     
     @IBAction func signInButton(_ sender: Any) {
         guard let mailAddress = inputMailAddress.text else { return }

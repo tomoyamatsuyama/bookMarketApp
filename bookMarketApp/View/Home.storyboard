@@ -109,7 +109,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="r9L-3g-OHg" id="2Z7-jM-zE8"/>
-                        <outlet property="tableView" destination="W4g-ez-MaY" id="ile-m5-Fn3"/>
+                        <outlet property="tableView" destination="W4g-ez-MaY" id="QXL-SM-2kR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmg-JL-Ysf" userLabel="First Responder" sceneMemberID="firstResponder"/>
