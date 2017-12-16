@@ -39,7 +39,6 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                                 <connections>
-                                                    <outlet property="dataSource" destination="QmZ-Nz-EXv" id="l1u-vy-46P"/>
                                                     <outlet property="delegate" destination="QmZ-Nz-EXv" id="6iB-jz-ATe"/>
                                                 </connections>
                                             </tableView>

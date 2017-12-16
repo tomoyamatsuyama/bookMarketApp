@@ -8,7 +8,18 @@
 import Foundation
 import UIKit
 
-class Api{
+class Api {
+    enum RequestType: String {
+        case GET
+        case POST
+        case PATCH
+        case DELETE
+    }
+    
+    var host: String {
+        return "http://localhost:3000/"
+    }
+    
     static func getRequet(url: String) -> URLRequest{
         guard let url = URL(string: url) else { return URLRequest(url: URL(string: "")!) }
         var request = URLRequest(url: url)
@@ -30,5 +41,33 @@ class Api{
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         return request
+    }
+}
+
+extension Api {
+    struct Auth {
+        enum Authorization {
+            case login
+            case signOut
+            
+            var path: String {
+                switch self {
+                case .login:
+                    return "users/sign_in.json"
+                case  .signOut:
+                    return ""
+                }
+            }
+        }
+        
+        static func login() {
+            let path = Authorization.login.path
+            let type = RequestType.GET.rawValue
+            
+        }
+        
+        static func signOut() {
+            let path = Authorization.signOut.path
+        }
     }
 }

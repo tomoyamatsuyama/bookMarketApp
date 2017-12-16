@@ -9,14 +9,16 @@
 import UIKit
 
 class CommentViewController: UIViewController {
-    var commentData = CommentData()
-    var roomId = 0
-    var bookId = 0
+    @IBOutlet private weak var commentScrollView: UIScrollView!
+    @IBOutlet private weak var commentTableView: UITableView!
+    @IBOutlet private weak var inputComment: UITextField!
     
-    @IBOutlet weak var commentScrollView: UIScrollView!
-    @IBOutlet weak var commentTableView: UITableView!
-    @IBOutlet weak var inputComment: UITextField!
+    private var commentViewModel = CommentViewModel()
     private let refreshControl = UIRefreshControl()
+    
+    func instantiate(roomId: Int, bookId: Int){
+        commentViewModel.initialize(roomId, bookId)
+    }
     
     @IBAction func touchGesture(_ sender: Any) {
         self.view.endEditing(true)
@@ -24,20 +26,21 @@ class CommentViewController: UIViewController {
     
     @IBAction func sendCommentButton(_ sender: Any) {
         if let comment = inputComment.text {
-            CommentRoom.postComment(String(roomId), comment, commentData.currentUserId)
+            CommentRoom.postComment(String(commentViewModel.currentRoomId), comment, commentViewModel.commentData.currentUserId)
             inputComment.text = ""
             reloadComment()
         }
     }
     
     private func reloadComment(){
-        commentData = CommentRoom.getCommentRoom(commentRoomId: roomId)
+        commentViewModel.getCommentData()
         commentTableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commentScrollView.isPagingEnabled = true
+        commentTableView.dataSource = commentViewModel
         commentTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshControlValueChanged(sender:)), for: .valueChanged)
     }
@@ -49,10 +52,6 @@ class CommentViewController: UIViewController {
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown), name: Notification.Name.UIKeyboardWillShow, object: nil)
@@ -81,8 +80,6 @@ class CommentViewController: UIViewController {
         commentScrollView.contentInset = UIEdgeInsets.zero
         commentScrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
-    
-    // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()

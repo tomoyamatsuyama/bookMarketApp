@@ -8,7 +8,21 @@
 import UIKit
 import Foundation
 
-extension CommentViewController: UITableViewDataSource {
+class CommentViewModel: NSObject, UITableViewDataSource {
+    public private(set) var commentData: CommentData = CommentData()
+    public private(set) var currentRoomId = 0
+    public private(set) var currentBookId = 0
+    
+    func initialize(_ roomId: Int, _ bookId: Int){
+        self.commentData = CommentRoom.getCommentRoom(commentRoomId: roomId)
+        self.currentRoomId = roomId
+        self.currentBookId = bookId
+    }
+    
+    func getCommentData(){
+        self.commentData = CommentRoom.getCommentRoom(commentRoomId: currentRoomId)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
         cell.textLabel?.text = "\(commentData.userName[indexPath.row]):  \(commentData.content[indexPath.row])"
@@ -19,3 +33,5 @@ extension CommentViewController: UITableViewDataSource {
         return commentData.userName.count
     }
 }
+
+

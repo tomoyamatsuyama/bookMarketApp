@@ -24,12 +24,6 @@ class SignInViewController: UIViewController {
         errorCheck(errorText: Users.singnIn(mailAddress, password))
     }
     
-    private func goToHome(){
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarView = storyboard.instantiateInitialViewController() as! UITabBarController
-        self.present(tabBarView, animated: true, completion: nil)
-    }
-    
     private func errorCheck(errorText: String) {
         if errorText.contains("error") {
             errorLabel.text = "ログイン失敗"

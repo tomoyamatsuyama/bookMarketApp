@@ -96,7 +96,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="Kzh-DF-DLk" id="2Og-yT-wdj"/>
                                     <outlet property="delegate" destination="Kzh-DF-DLk" id="1v3-N2-79S"/>
                                 </connections>
                             </tableView>

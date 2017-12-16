@@ -9,11 +9,16 @@
 import UIKit
 
 class PurchasedGoodsViewController: UIViewController {
-    var purchasedBookDetailData: BookDetailData = BookDetailData()
     @IBOutlet weak private var imageView1: UIImageView!
     @IBOutlet weak private var imageView2: UIImageView!
     @IBOutlet weak private var imageView3: UIImageView!
     @IBOutlet weak private var purchasedTableView: UITableView!
+    
+    private var purchasedGoodsViewModel = PurchasedGoodsViewModel()
+    
+    func instantiate(currentBookId: Int){
+        purchasedGoodsViewModel.initialize(bookId: currentBookId)
+    }
     
     @IBAction private func rightSwiped(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
@@ -22,17 +27,8 @@ class PurchasedGoodsViewController: UIViewController {
     @IBAction func goToMessage(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Message", bundle: nil)
         let messageView = storyboard.instantiateInitialViewController() as! MessageViewController
-        let roomId = MessageRoom.getMessageRoomId(bookId: purchasedBookDetailData.id)
-        messageView.messageData = MessageRoom.getMessage(messageRoomId: roomId)
-        messageView.roomId = roomId
+        messageView.instantiate(currentBookId: purchasedGoodsViewModel.currentBookId, currentMessageRoomId: purchasedGoodsViewModel.messageRoomId)
         self.navigationController?.pushViewController(messageView, animated: true)
-    }
-    
-    private func goToImageShow(image: UIImage){
-        let storyboard: UIStoryboard = UIStoryboard(name: "ImageDetail", bundle: nil)
-        let imageDetailView: ImageDetailViewController = storyboard.instantiateInitialViewController() as! ImageDetailViewController
-        imageDetailView.image = image
-        self.present(imageDetailView, animated: true, completion: nil)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -52,23 +48,12 @@ class PurchasedGoodsViewController: UIViewController {
         }
     }
     
-    private func imageSet(imageUrlString: String) -> UIImage{
-        guard let imageUrl: URL = URL(string: "http://localhost:3000/\(imageUrlString)") else { return UIImage()}
-        do {
-            let imageData = try NSData(contentsOf: imageUrl, options: NSData.ReadingOptions.mappedIfSafe)
-            guard let img = UIImage(data: imageData as Data) else { return UIImage()}
-            return img
-        } catch {
-            print("Error: can't create image.")
-        }
-        return UIImage()
-    }
-    
     @IBAction func tranzactionConpleteButton(_ sender: Any) {
         transactionConplete()
     }
+    
     private func transactionConplete(){
-        guard let buyId = purchasedBookDetailData.buyId else { return }
+        guard let buyId = purchasedGoodsViewModel.purchasedBookDetailData.buyId else { return }
         let errorText = Book.finishTrade(buyId: buyId)
         if errorText.contains("error"){
             return
@@ -77,31 +62,20 @@ class PurchasedGoodsViewController: UIViewController {
         }
     }
     
-    
-    
-    private func goToHome(){
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainView = mainStoryboard.instantiateInitialViewController() as! UITabBarController
-        self.present(mainView, animated: true, completion: nil)
+    private func setImage(){
+        self.imageView1.image = imageSet(imageUrlString: purchasedGoodsViewModel.purchasedBookDetailData.imageLists[0]!)
+        guard let imageString2: String = purchasedGoodsViewModel.purchasedBookDetailData.imageLists[1] else {return}
+        self.imageView2.image = imageSet(imageUrlString: imageString2)
+        guard let imageString3: String = purchasedGoodsViewModel.purchasedBookDetailData.imageLists[2] else {return}
+        self.imageView3.image = imageSet(imageUrlString: imageString3)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.purchasedTableView.dataSource = purchasedGoodsViewModel
         self.navigationItem.hidesBackButton = true
-        self.navigationItem.title = purchasedBookDetailData.name
-        self.imageView1.image = imageSet(imageUrlString: purchasedBookDetailData.imageLists[0]!)
-        
-        if let imageString2: String = purchasedBookDetailData.imageLists[1] {
-            self.imageView2.image = imageSet(imageUrlString: imageString2)
-        }
-        
-        if let imageString3: String = purchasedBookDetailData.imageLists[2] {
-            self.imageView3.image = imageSet(imageUrlString: imageString3)
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        self.navigationItem.title = purchasedGoodsViewModel.purchasedBookDetailData.name
+        setImage()
     }
 }
 

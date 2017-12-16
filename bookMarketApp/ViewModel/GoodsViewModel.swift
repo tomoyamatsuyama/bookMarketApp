@@ -9,10 +9,18 @@
 import UIKit
 import Foundation
 
-extension GoodsViewController: UITableViewDataSource{
+class GoodsViewModel: NSObject, UITableViewDataSource {
+    public private(set) var booksData: BookDetailData = BookDetailData()
+    public private(set) var currentBookId = 0
+    
+    func getBook(bookId: Int){
+        self.currentBookId = bookId
+        self.booksData = Book.getBookDetail(bookId: bookId)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "goodsCell", for: indexPath) as! UITableViewCell
-        let goodsList: [String] = ["タイトル: \(selectedBookDetailData.name)", "著者: \(selectedBookDetailData.author)", "授業名: \(selectedBookDetailData.lesson)", "出品者: \(selectedBookDetailData.userName)", "金額: \(selectedBookDetailData.money)"]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "goodsCell", for: indexPath)
+        let goodsList: [String] = ["タイトル: \(booksData.name)", "著者: \(booksData.author)", "授業名: \(booksData.lesson)", "出品者: \(booksData.userName)", "金額: \(booksData.money)"]
         cell.textLabel?.text = goodsList[indexPath.row]
         return cell
     }
@@ -21,3 +29,4 @@ extension GoodsViewController: UITableViewDataSource{
         return 5
     }
 }
+

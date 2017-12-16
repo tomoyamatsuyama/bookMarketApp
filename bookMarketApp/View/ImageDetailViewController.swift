@@ -11,7 +11,11 @@ import UIKit
 class ImageDetailViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    var image: UIImage = UIImage()
+    private var imageDetailViewModel = ImageDetailViewModel()
+    
+    func instantiate(image: UIImage){
+        imageDetailViewModel.initialize(selectedImage: image)
+    }
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -19,7 +23,7 @@ class ImageDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.imageView.image = image
+        self.imageView.image = imageDetailViewModel.image
     }
 
     override func didReceiveMemoryWarning() {

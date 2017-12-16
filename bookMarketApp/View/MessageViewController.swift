@@ -9,30 +9,33 @@
 import UIKit
 
 class MessageViewController: UIViewController {
-    var messageData: MessageData = MessageData()
-    var selectedBookId: Int = 0
-    var roomId = 0
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var inputMessage: UITextField!
     @IBOutlet weak var messageTableView: UITableView!
+    
     private let refreshControl = UIRefreshControl()
+    private var messageViewModel = MessageViewModel()
+    
+    func instantiate(currentBookId: Int, currentMessageRoomId: Int){
+        messageViewModel.initialize(bookId: currentBookId, roomId: currentMessageRoomId)
+    }
     
     @IBAction func sendMessage(_ sender: Any) {
         guard let message: String = inputMessage.text else { return }
-        MessageRoom.postMessage(message: message, roomId: String(roomId))
+        MessageRoom.postMessage(message: message, roomId: String(messageViewModel.currentMessageRoomId)) //Modelで書くべきか。
         inputMessage.text! = ""
         reloadMessage()
     }
     
     private func reloadMessage(){
-        messageData = MessageRoom.getMessage(messageRoomId: roomId)
+        messageViewModel.getMessage()
         messageTableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.isPagingEnabled = true
+        messageTableView.dataSource = messageViewModel
         messageTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(self.refreshControlValueChanged(sender:)), for: .valueChanged)
     }
@@ -46,10 +49,6 @@ class MessageViewController: UIViewController {
     
     @IBAction private func touchGesture(_ sender: Any) {
         self.view.endEditing(true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,8 +79,6 @@ class MessageViewController: UIViewController {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
-    
-    // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()

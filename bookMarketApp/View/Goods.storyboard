@@ -51,7 +51,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="fu8-Zf-8hq" id="qwa-lH-BcU"/>
                                     <outlet property="delegate" destination="fu8-Zf-8hq" id="K0I-bL-8CR"/>
                                 </connections>
                             </tableView>

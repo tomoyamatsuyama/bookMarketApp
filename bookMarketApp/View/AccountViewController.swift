@@ -9,9 +9,9 @@
 import UIKit
 
 class AccountViewController: UIViewController {
-
-    @IBOutlet weak var accountTableView: UITableView!
-    var accountMenuList = ["ユーザ情報編集", "出品一覧", "取引中一覧", "ログアウト"]
+    @IBOutlet weak private var accountTableView: UITableView!
+    private var accountViewModel = AccountViewModel()
+    
     enum CellType: Int {
         case profile
         case mySellingLists
@@ -31,42 +31,12 @@ class AccountViewController: UIViewController {
         }
     }
     
-    private func goToSignIn(){
-        let storyboard: UIStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-        let signInView = storyboard.instantiateInitialViewController() as! UINavigationController
-        self.present(signInView, animated: true, completion: nil)
-    }
-    
-    private func goToUserProfile(_ profileData: ProfileData){
-        let storyboard: UIStoryboard = UIStoryboard(name: "UserProfile", bundle: nil)
-        let userProfileView = storyboard.instantiateInitialViewController() as! UserProfileViewController
-        userProfileView.userProfileData = profileData
-        self.navigationController?.pushViewController(userProfileView, animated: true)
-    }
-    
-    private func goToMySellingBook(_ sellingData: ProfileData){
-        let storyboard: UIStoryboard = UIStoryboard(name: "MySellingBook", bundle: nil)
-        let mySellingBookView = storyboard.instantiateInitialViewController() as! MySellingBookViewController
-        mySellingBookView.sellingData = sellingData
-        self.navigationController?.pushViewController(mySellingBookView, animated: true)
-    }
-    
-    private func goToMyTradingBook(){
-        let storyboard: UIStoryboard = UIStoryboard(name: "MyTradingBook", bundle: nil)
-        let myTradingBookView = storyboard.instantiateInitialViewController() as! MyTradingBookViewController
-        myTradingBookView.tradingData = Users.getTradingData()
-        self.navigationController?.pushViewController(myTradingBookView, animated: true)
-    }
-    
-    
-    func nextPage(_ selectCellTextLabelText: String){
-        let profileData = Users.getProfileData()
-        let CellId: Int = accountMenuList.index(of: selectCellTextLabelText)!
-        switch CellId {
+    func nextPage(_ cellId: Int){
+        switch cellId {
         case CellType.profile.index:
-            goToUserProfile(profileData)
+            goToUserProfile()
         case CellType.mySellingLists.index:
-            goToMySellingBook(profileData)
+            goToMySellingBook()
         case CellType.myBuyingLists.index:
             goToMyTradingBook()
         case CellType.signOut.index:
@@ -79,21 +49,41 @@ class AccountViewController: UIViewController {
         }
     }
     
+    private func goToSignIn(){
+        let storyboard: UIStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let signInView = storyboard.instantiateInitialViewController() as! UINavigationController
+        self.present(signInView, animated: true, completion: nil)
+    }
+    
+    private func goToUserProfile(){
+        let storyboard: UIStoryboard = UIStoryboard(name: "UserProfile", bundle: nil)
+        let userProfileView = storyboard.instantiateInitialViewController() as! UserProfileViewController
+        self.navigationController?.pushViewController(userProfileView, animated: true)
+    }
+    
+    private func goToMySellingBook(){
+        let storyboard: UIStoryboard = UIStoryboard(name: "MySellingBook", bundle: nil)
+        let mySellingBookView = storyboard.instantiateInitialViewController() as! MySellingBookViewController
+        mySellingBookView.instatiate()
+        self.navigationController?.pushViewController(mySellingBookView, animated: true)
+    }
+    
+    private func goToMyTradingBook(){
+        let storyboard: UIStoryboard = UIStoryboard(name: "MyTradingBook", bundle: nil)
+        let myTradingBookView = storyboard.instantiateInitialViewController() as! MyTradingBookViewController
+        myTradingBookView.instatiate()
+        self.navigationController?.pushViewController(myTradingBookView, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        accountTableView.dataSource = accountViewModel
     }
 }
 
 extension AccountViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectCell = tableView.cellForRow(at: indexPath) else { return }
-        guard let selectCellTextLabel = selectCell.textLabel else { return }
-        guard let selectCellTextLabelText = selectCellTextLabel.text else { return }
         tableView.deselectRow(at: indexPath, animated: true)
-        nextPage(selectCellTextLabelText)
+        nextPage(indexPath.row)
     }
 }

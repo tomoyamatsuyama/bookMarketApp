@@ -8,13 +8,15 @@
 import Foundation
 import UIKit
 
-extension AccountViewController: UITableViewDataSource{
+class AccountViewModel:NSObject, UITableViewDataSource {
+    private var accountMenuList = ["ユーザ情報編集", "出品一覧", "取引中一覧", "ログアウト"]
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accountMenuList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath)
         cell.textLabel?.text = accountMenuList[indexPath.row]
         return cell
     }

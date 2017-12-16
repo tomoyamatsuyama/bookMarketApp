@@ -15,6 +15,28 @@ class BooksTableViewCell: UITableViewCell {
     @IBOutlet weak var lessonLabel: UILabel!
     @IBOutlet weak var monneyLabel: UILabel!
     
+    private func checkImage(imageUrlString: String) -> UIImage? {
+        guard let imageUrl: URL = URL(string: "http://localhost:3000/\(imageUrlString)") else {return nil}
+        do {
+            let imageData = try NSData(contentsOf: imageUrl, options: NSData.ReadingOptions.mappedIfSafe)
+            let img = UIImage(data: imageData as Data)
+            return img
+        } catch {
+            print("Error: can't create image.")
+            return nil
+        }
+    }
+    
+    func bind(_ cell: BooksTableViewCell, bookName: String, lesson: String, author: String, money: Int, image: String) -> BooksTableViewCell{
+        cell.titleLabel.text = bookName
+        // localized.strings
+        cell.lessonLabel.text = "授業名:" + lesson
+        cell.authorLabel.text = "著者:" + author
+        cell.monneyLabel.text = "金額: \(money)"
+        cell.imgView.image = self.checkImage(imageUrlString: image) //出品時に1枚は必須なので必ずnilではない。
+        return cell
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

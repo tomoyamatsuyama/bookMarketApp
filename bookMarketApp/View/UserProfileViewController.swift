@@ -9,15 +9,14 @@
 import UIKit
 
 class UserProfileViewController: UIViewController {
-    
-    var userProfileData = ProfileData()
-    
     @IBOutlet weak private var errorLabel: UILabel!
     @IBOutlet weak private var inputEmailAddress: UITextField!
     @IBOutlet weak private var inputPass: UITextField!
     @IBOutlet weak private var inputConfirmPass: UITextField!
     @IBOutlet weak private var inputCurrentPass: UITextField!
     @IBOutlet weak private var inputUserName: UITextField!
+    
+    private var userProfileViewModel = UserProfileViewModel()
     
     private func errorCheck(_ errorText: String){
         if errorText.contains("error") {
@@ -39,14 +38,10 @@ class UserProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inputEmailAddress.text = userProfileData.userEmail
+        inputEmailAddress.text = userProfileViewModel.userProfileData.userEmail
         inputPass.placeholder = "新しいパスワード(6文字以上)"
         inputConfirmPass.placeholder = "パスワード確認"
         inputCurrentPass.placeholder = "古いパスワード"
-        inputUserName.text = userProfileData.userName
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        inputUserName.text = userProfileViewModel.userProfileData.userName
     }
 }

@@ -8,9 +8,21 @@
 import UIKit
 import Foundation
 
-extension MessageViewController: UITableViewDataSource{
+class MessageViewModel: NSObject, UITableViewDataSource {
+    private var messageData: MessageData = MessageData()
+    public private(set) var currentMessageRoomId = 0
+    
+    func initialize(bookId: Int, roomId: Int){
+        self.currentMessageRoomId = roomId
+        self.messageData = MessageRoom.getMessage(messageRoomId: roomId)
+    }
+    
+    func getMessage(){
+        self.messageData = MessageRoom.getMessage(messageRoomId: currentMessageRoomId)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath)
         cell.textLabel?.text = "\(messageData.userNameLists[indexPath.row]):  \(messageData.contentsLists[indexPath.row])"
         return cell
     }
@@ -19,3 +31,4 @@ extension MessageViewController: UITableViewDataSource{
         return messageData.userNameLists.count
     }
 }
+

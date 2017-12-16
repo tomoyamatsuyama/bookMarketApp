@@ -124,6 +124,52 @@ class Users{
         return errorText
     }
     
+    // Swift GCD Dispatch.main.async ....
+    
+//    class Test {
+//        func main() {
+////            let comp: ((String?) -> Void)?
+////
+////            comp = { text in
+////
+////            }
+////
+////            Users.register(email: "", completion: comp)
+//
+////            let comp2 = { (item: String?) in
+////
+////            }
+////
+////            Users.register(email: "", completion: comp2)
+//
+//            Users.register(email: "", completion: { text in
+//                guard let text = text else { return }
+//            })
+//        }
+//    }
+    
+//    static func register(email: String, completion: ((String?)->Void)? = nil) {
+//        do {
+////            let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
+////            request.httpBody = jsonData
+//            let config = URLSessionConfiguration.default
+//            let session = URLSession(configuration: config)
+//            let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
+//                if respData != nil {
+//                    let text = String(data: respData!, encoding: .utf8)
+//                    errorText = text!
+//                    completion?(text)
+//                } else {
+//
+//                }
+//            })
+//            task.resume()
+////            Thread.sleep(forTimeInterval: 0.2)
+//        } catch {
+////            errorText = error.localizedDescription
+//        }
+//    }
+    
     static func resister(_ email: String, _ password: String, _ password_confirmation: String, _ user_name: String) -> String {
         var errorText: String = ""
         guard let url = URL(string: "http://localhost:3000/users.json") else { return "" }
@@ -141,6 +187,7 @@ class Users{
                 if respData != nil {
                     let text = String(data: respData!, encoding: .utf8)
                     errorText = text!
+                    
                 }
             })
             task.resume()
