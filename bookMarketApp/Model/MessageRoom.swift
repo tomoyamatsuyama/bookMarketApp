@@ -116,7 +116,8 @@ struct MessageData {
 class MessageRoom{
     static func getMessageRoomId(bookId: Int) -> Int {
         var messageRoomId: Int = 0
-        let request = Api.getRequet(url: "http://localhost:3000/books/\(bookId).json")
+        let url = Api.host + Api.Messages.Message.getMessageRoom(bookId: bookId).path()
+        let request = Api.getRequet(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -133,7 +134,8 @@ class MessageRoom{
     
     static func getMessage(messageRoomId: Int) -> MessageData {
         var messageData = MessageData()
-        let request = Api.getRequet(url: "http://localhost:3000/rooms/\(messageRoomId).json")
+        let url = Api.host + Api.Messages.Message.getMessage(messageRoomId: messageRoomId).path()
+        let request = Api.getRequet(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -154,7 +156,8 @@ class MessageRoom{
     }
     
     static func postMessage(message: String, roomId: String) {
-        let request = Api.makeRequest(url: "http://localhost:3000/messages.json")
+        let url = Api.host + Api.Messages.Message.postMessage.path()
+        let request = Api.makeRequest(url: url)
         let params: [String:Any] = ["message":["content": message, "room_id": roomId]]
         print("2",params)
         do{

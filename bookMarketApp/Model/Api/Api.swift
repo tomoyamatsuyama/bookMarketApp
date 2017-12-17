@@ -10,13 +10,13 @@ import UIKit
 
 class Api {
     enum RequestType: String {
-        case GET
-        case POST
-        case PATCH
-        case DELETE
+        case GET = "GET"
+        case POST = "POST"
+        case PUT = "PUT"
+        case DELETE = "DELETE"
     }
     
-    var host: String {
+    static var host: String {
         return "http://localhost:3000/"
     }
     
@@ -30,7 +30,7 @@ class Api {
         return request
     }
     
-    static func makeRequest(url: String, status: String = "POST") -> NSMutableURLRequest{
+    static func makeRequest(url: String, status: String = RequestType.POST.rawValue) -> NSMutableURLRequest{
         guard let url = URL(string: url) else { return NSMutableURLRequest() }
         guard let authUrl = URL(string: "http://localhost:3000/users/sign_in.json") else { return NSMutableURLRequest() }
         let cookies = HTTPCookieStorage.shared.cookies(for: authUrl as URL)
@@ -44,30 +44,3 @@ class Api {
     }
 }
 
-extension Api {
-    struct Auth {
-        enum Authorization {
-            case login
-            case signOut
-            
-            var path: String {
-                switch self {
-                case .login:
-                    return "users/sign_in.json"
-                case  .signOut:
-                    return ""
-                }
-            }
-        }
-        
-        static func login() {
-            let path = Authorization.login.path
-            let type = RequestType.GET.rawValue
-            
-        }
-        
-        static func signOut() {
-            let path = Authorization.signOut.path
-        }
-    }
-}

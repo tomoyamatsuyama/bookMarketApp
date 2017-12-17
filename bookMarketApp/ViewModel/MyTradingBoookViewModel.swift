@@ -9,10 +9,10 @@ import UIKit
 import Foundation
 
 class MyTradingBookViewModel: NSObject, UITableViewDataSource {
-    public private(set) var tradingData = Users.getTradingData()
+    public private(set) var tradingData = Book.getTradingData()
     
     func initialize(){
-        self.tradingData = Users.getTradingData()
+        self.tradingData = Book.getTradingData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

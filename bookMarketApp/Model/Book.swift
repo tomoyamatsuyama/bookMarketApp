@@ -101,9 +101,11 @@ struct BookDetailData {
 
 class Book{
     static var currentUserId: Int = 0
+    
     static func getAll() -> BooksData{
         var booksData: BooksData = BooksData()
-        let request = Api.getRequet(url: "http://localhost:3000/books.json")
+        let url = Api.host + Api.Books.Book.bookAll.path()
+        let request = Api.getRequet(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -132,7 +134,8 @@ class Book{
     
     static func getBookDetail(bookId: Int) -> BookDetailData{
         var bookDetailData: BookDetailData = BookDetailData()
-        let request = Api.getRequet(url: "http://localhost:3000/books/\(bookId).json")
+        let url = Api.host + Api.Books.Book.bookDetail(bookId: bookId).path()
+        let request = Api.getRequet(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -157,7 +160,8 @@ class Book{
     }
     
     static func postPurchased(bookName: String, bookId: String, image1: String) {
-        let request = Api.makeRequest(url: "http://localhost:3000/rooms.json")
+        let url = Api.host + Api.Books.Book.postPurchased.path()
+        let request = Api.makeRequest(url: url)
         let params: [String:Any] = ["room":["name":bookName, "book_id": bookId, "image1": image1]]
         do{
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -174,9 +178,44 @@ class Book{
         Thread.sleep(forTimeInterval: 0.2)
     }
     
+    static func getTradingData() -> TradingData{
+        var tradingData = TradingData()
+        let url = Api.Books.Book.getTrading.path()
+        let request = Api.getRequet(url: url)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let objects: Trading = try JSONDecoder().decode(Trading.self, from: data)
+                objects.Room.forEach { object in
+                    if objects.CurrentUser.id == object.user_id || objects.CurrentUser.id == object.user_2 {
+                        tradingData.roomIdLists.append(object.id)
+                        tradingData.bookIdLists.append(object.book_id)
+                        tradingData.userFirstIdLists.append(object.user_id)
+                        tradingData.userSecondIdLists.append(object.user_2)
+                        tradingData.bookNameLists.append(object.name)
+                        tradingData.imageLists.append(object.image1)
+                        tradingData.authorLists.append(object.author)
+                        tradingData.lessonLists.append(object.lesson)
+                        tradingData.moneyLists.append(object.money)
+                        tradingData.buyIdLists.append(object.buy_id)
+                    }
+                }
+                tradingData.currentUserId = objects.CurrentUser.id
+                Book.currentUserId = objects.CurrentUser.id
+            } catch let e {
+                print(e)
+            }
+        }
+        task.resume()
+        Thread.sleep(forTimeInterval: 0.2)
+        return tradingData
+    }
+    
     static func finishTrade(buyId: Int) -> String {
         var errorText: String = ""
-        let request = Api.makeRequest(url: "http://localhost:3000/buys/\(buyId).json", status: "DELETE")
+        let url = Api.host + Api.Books.Book.finishTrade(buyId: buyId).path()
+        let type = Api.RequestType.DELETE.rawValue
+        let request = Api.makeRequest(url: url, status: type)
         let params: [String:String?] = ["id": "\(buyId)"]
         do{
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])

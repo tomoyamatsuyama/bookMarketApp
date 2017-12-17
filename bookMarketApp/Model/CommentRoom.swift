@@ -73,7 +73,8 @@ struct CommentData {
 class CommentRoom{
     static func getCommentRoom(commentRoomId: Int) -> CommentData {
         var commentData = CommentData()
-        let request = Api.getRequet(url: "http://localhost:3000/commentrooms/\(commentRoomId).json")
+        let url = Api.host + Api.Comments.Comment.getCommentRoom(commentRoomId: commentRoomId).path()
+        let request = Api.getRequet(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -95,7 +96,8 @@ class CommentRoom{
     }
     
     static func postComment(_ commentId: String, _ comment: String, _ currentUserId: Int) {
-        let request = Api.makeRequest(url: "http://localhost:3000/comments.json")
+        let url = Api.host + Api.Comments.Comment.postComment.path()
+        let request = Api.makeRequest(url: url)
         let params: [String:Any] = ["comment":["commentroom_id":commentId, "user_id":currentUserId, "comment":"\(comment)"]]
         do{
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])

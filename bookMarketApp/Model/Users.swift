@@ -93,12 +93,14 @@ struct TradingData {
     var moneyLists: [Int] = []
     var buyIdLists: [Int] = []
 }
+
 class Users{
     static func singnIn(_ email: String, _ password: String) -> String{
         var errorText: String = ""
-        guard let url = URL(string: "http://localhost:3000/users/sign_in.json") else { return "" }
+        let path = Api.Users.User.signIn.path()
+        guard let url = URL(string: Api.host + path) else { return "" }
         let request = NSMutableURLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = Api.RequestType.POST.rawValue
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         let params: [String:Any] = ["user":["email": email, "password": password]]
@@ -172,9 +174,10 @@ class Users{
     
     static func resister(_ email: String, _ password: String, _ password_confirmation: String, _ user_name: String) -> String {
         var errorText: String = ""
-        guard let url = URL(string: "http://localhost:3000/users.json") else { return "" }
+        let path = Api.Users.User.resister.path()
+        guard let url = URL(string: Api.host + path) else { return "" }
         let request = NSMutableURLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = Api.RequestType.POST.rawValue
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         let params: [String:Any] = ["user":["email": email, "password": password, "password_confirmation": password_confirmation, "user_name": user_name]]
@@ -200,7 +203,8 @@ class Users{
     
     static func getProfileData() -> ProfileData{
         var profileData: ProfileData = ProfileData()
-        let request = Api.getRequet(url: "http://localhost:3000/users/\(Book.currentUserId).json")
+        let url = Api.Users.User.getProfile(bookId: Book.currentUserId).path()
+        let request = Api.getRequet(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -227,41 +231,11 @@ class Users{
         return profileData
     }
     
-    static func getTradingData() -> TradingData{
-        var tradingData = TradingData()
-        let request = Api.getRequet(url: "http://localhost:3000/rooms.json")
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let objects: Trading = try JSONDecoder().decode(Trading.self, from: data)
-                objects.Room.forEach { object in
-                    if objects.CurrentUser.id == object.user_id || objects.CurrentUser.id == object.user_2 {
-                        tradingData.roomIdLists.append(object.id)
-                        tradingData.bookIdLists.append(object.book_id)
-                        tradingData.userFirstIdLists.append(object.user_id)
-                        tradingData.userSecondIdLists.append(object.user_2)
-                        tradingData.bookNameLists.append(object.name)
-                        tradingData.imageLists.append(object.image1)
-                        tradingData.authorLists.append(object.author)
-                        tradingData.lessonLists.append(object.lesson)
-                        tradingData.moneyLists.append(object.money)
-                        tradingData.buyIdLists.append(object.buy_id)
-                    }
-                }
-                tradingData.currentUserId = objects.CurrentUser.id
-                Book.currentUserId = objects.CurrentUser.id
-            } catch let e {
-                print(e)
-            }
-        }
-        task.resume()
-        Thread.sleep(forTimeInterval: 0.2)
-        return tradingData
-    }
-    
     static func edit(_ mail: String, _ pass: String, _ confirmPass: String, _ currentPass: String, _ name: String) -> String{
         var errorText: String = ""
-        let request = Api.makeRequest(url: "http://localhost:3000/users.json", status: "PUT")
+        let url = Api.Users.User.edit.path()
+        let type = Api.RequestType.PUT.rawValue
+        let request = Api.makeRequest(url: Api.host + url, status: type)
         let params: [String:Any] = ["user":["email": mail, "password": pass, "password_confirmation": confirmPass, "current_password": currentPass, "user_name": name]]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -285,7 +259,9 @@ class Users{
     static func signOut() -> String {
         var errorText: String = ""
         var check: String
-        let request = Api.makeRequest(url: "http://localhost:3000/users/sign_out.json", status: "DELETE")
+        let url = Api.Users.User.signOut.path()
+        let type = Api.RequestType.DELETE.rawValue
+        let request = Api.makeRequest(url: Api.host + url, status: type)
         let params: [String:String?] = ["authenticity_token": nil]
         do{
             let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
