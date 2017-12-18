@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  bookMarketApp
+
+  Created by 松山友也 on 2017/12/18.
+  Copyright © 2017年 Tomoya Matsuyama. All rights reserved.
+*/
+
+"title" = "タイトル: %@";
+"lesson" = "授業名: %@";
+"author" = "著者: %@";
+"seller" = "出品者: %@";
+"money" = "金額: %d";
