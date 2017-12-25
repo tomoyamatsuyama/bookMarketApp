@@ -60,7 +60,7 @@ struct PurchasedBook: Codable {
     }
 }
 
-struct Message: Codable {
+struct MessageModel: Codable {
     var Room: RoomInfo
     var User: User
     var Messages: [Contents]
@@ -112,74 +112,3 @@ struct MessageData {
     var userNameLists: [String] = []
     var contentsLists: [String] = []
 }
-
-class MessageRoom{
-    static func getMessageRoomId(bookId: Int) -> Int {
-        var messageRoomId: Int = 0
-        let url = Api.host + Api.Messages.Message.getMessageRoom(bookId: bookId).path()
-        let request = Api.getRequet(url: url)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let objects: PurchasedBook = try JSONDecoder().decode(PurchasedBook.self, from: data)
-                messageRoomId = objects.Room.id
-            } catch let e {
-                print(e)
-            }
-        }
-        task.resume()
-        Thread.sleep(forTimeInterval: 0.2)
-        return messageRoomId
-    }
-    
-    static func getMessage(messageRoomId: Int) -> MessageData {
-        var messageData = MessageData()
-        let url = Api.host + Api.Messages.Message.getMessage(messageRoomId: messageRoomId).path()
-        let request = Api.getRequet(url: url)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let objects: Message = try JSONDecoder().decode(Message.self, from: data)
-                objects.Messages.forEach { object in
-                    messageData.userNameLists.append(object.user_name)
-                    messageData.contentsLists.append(object.content)
-                }
-                messageData.bookId = objects.Room.book_id
-                messageData.roomId = objects.Room.id
-            } catch let e {
-                print(e)
-            }
-        }
-        task.resume()
-        Thread.sleep(forTimeInterval: 0.3)
-        return messageData
-    }
-    
-    static func postMessage(message: String, roomId: String) {
-        let url = Api.host + Api.Messages.Message.postMessage.path()
-        let request = Api.makeRequest(url: url)
-        let params: [String:Any] = ["message":["content": message, "room_id": roomId]]
-        print("2",params)
-        do{
-            let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
-            request.httpBody = jsonData
-            let config = URLSessionConfiguration.default
-            let session = URLSession(configuration: config)
-            let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
-                if respData != nil {
-                    let text = String(data: respData!, encoding: .utf8)
-                }
-            })
-            task.resume()
-        }catch{
-            print(error.localizedDescription)
-        }
-        Thread.sleep(forTimeInterval: 0.2)
-    }
-}
-
-
-
-
-
-

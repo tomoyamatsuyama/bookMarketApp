@@ -10,20 +10,18 @@ import Foundation
 
 extension UIViewController {
     func goToHome(){
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let mainView = mainStoryboard.instantiateInitialViewController() as! UITabBarController
         self.present(mainView, animated: true, completion: nil)
     }
     
-    func goToImageShow(image: UIImage){
-        let storyboard: UIStoryboard = UIStoryboard(name: "ImageDetail", bundle: nil)
-        let imageDetailView: ImageDetailViewController = storyboard.instantiateInitialViewController() as! ImageDetailViewController
-        imageDetailView.instantiate(image: image)
+    func goToImageShow(image: UIImage) {
+        let imageDetailView = ImageDetailViewController.instantiate(image: image)
         self.present(imageDetailView, animated: true, completion: nil)
     }
     
     func imageSet(imageUrlString: String) -> UIImage? {
-        guard let imageUrl: URL = URL(string: "http://localhost:3000/\(imageUrlString)") else { return nil}
+        guard let imageUrl = URL(string: Api.host + "\(imageUrlString)") else { return nil}
         do {
             let imageData = try NSData(contentsOf: imageUrl, options: NSData.ReadingOptions.mappedIfSafe)
             guard let img = UIImage(data: imageData as Data) else { return nil}
