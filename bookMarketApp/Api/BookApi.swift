@@ -33,14 +33,11 @@ extension Api {
             }
         }
         
-        static var currentUserId: Int = 0
-        
         static func getAll(completion: ((BooksData) -> Void)? = nil) {
             var booksData: BooksData = BooksData()
             let path = Book.bookAll.path
             guard let request = Api.makeRequest(url: Api.host + path, type: Api.RequestType.GET.rawValue) else { return }
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                
                 guard let data = data else { return }
                 do {
                     let objects: BooksAll = try JSONDecoder().decode(BooksAll.self, from: data)
@@ -59,7 +56,7 @@ extension Api {
                     }
                     UserDefaults.standard.set(objects.CurrentUser.id, forKey: Info.User.id.rawValue)
                     UserDefaults.standard.set(objects.CurrentUser.user_name, forKey: Info.User.name.rawValue)
-                    DispatchQueue.main.async {  //You must write main queue (View関係はmainで書く)
+                    DispatchQueue.main.async {
                         completion?(booksData)
                     }
                 } catch let e {
@@ -97,9 +94,8 @@ extension Api {
             task.resume()
         }
         
-        static func postPurchased(bookName: String, bookId: String, image1: String, completion: (() -> Void)? = nil) {
-            let path = Book.postPurchased.path
-            guard var request = Api.makeRequest(url: Api.host + path, type: Api.RequestType.POST.rawValue) else { return }
+        static func postPurchased(bookName: String, bookId: String, image1: String, completion: ((Bool) -> Void)? = nil) {
+            guard var request = Api.makeRequest(url: Api.host + Book.postPurchased.path, type: Api.RequestType.POST.rawValue) else { return }
             let params: [String:Any] = ["room":["name":bookName, "book_id": bookId, "image1": image1]]
             do{
                 let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -107,8 +103,10 @@ extension Api {
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
+                    guard let response = resp else { return }
+                    let isStatus = Api.checkResponse(response: response)
                     DispatchQueue.main.async {
-                        completion?()
+                        completion?(isStatus)
                     }
                 })
                 task.resume()
@@ -150,10 +148,8 @@ extension Api {
             task.resume()
         }
         
-        static func finishTrade(buyId: Int, completion: ((String) -> Void)? = nil) {
-            var errorText: String = ""
-            let path = Book.finishTrade.path + "\(buyId)"
-            guard var request = Api.makeRequest(url: Api.host + path, type: Api.RequestType.DELETE.rawValue) else { return }
+        static func finishTrade(buyId: Int, completion: ((Bool) -> Void)? = nil) {
+            guard var request = Api.makeRequest(url: Api.host + Book.finishTrade.path + "\(buyId)" + ".json", type: Api.RequestType.DELETE.rawValue) else { return }
             let params: [String:String?] = ["id": "\(buyId)"]
             do{
                 let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -161,14 +157,13 @@ extension Api {
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
-                    if respData != nil {
-                        errorText = String(data: respData!, encoding: .utf8)!
-                    }
-                    completion?(errorText)
+                    guard let response = resp else { return }
+                    let isStatus = Api.checkResponse(response: response)
+                    completion?(isStatus)
                 })
                 task.resume()
             }catch{
-                errorText = error.localizedDescription
+                print(error.localizedDescription)
             }
         }
     }

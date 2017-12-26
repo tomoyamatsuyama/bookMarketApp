@@ -18,16 +18,16 @@ class PurchasedGoodsViewModel: NSObject,UITableViewDataSource {
         setMessageRoomId()
     }
     
+    func setMessageRoomId(){
+        Api.Messages.getMessageRoomId(bookId: currentBookId, completion: { mgRoomId in
+            self.messageRoomId = mgRoomId
+        })
+    }
+    
     func setPurchasedData(completion: (() -> Void)? = nil) {
         Api.Books.getBookDetail(bookId: currentBookId, completion: { bookData in
             self.purchasedBookDetailData = bookData
             completion?()
-        })
-    }
-    
-    func setMessageRoomId(){
-        Api.Messages.getMessageRoomId(bookId: currentBookId, completion: { mgRoomId in
-            self.messageRoomId = mgRoomId
         })
     }
     

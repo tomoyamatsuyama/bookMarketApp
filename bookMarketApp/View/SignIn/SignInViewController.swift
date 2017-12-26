@@ -21,10 +21,10 @@ class SignInViewController: UIViewController {
     @IBAction func signInButton(_ sender: Any) {
         guard let mailAddress = inputMailAddress.text else { return }
         guard let password = inputPassword.text else { return }
-        Api.Users.singnIn(email: mailAddress, password: password, completion: { error in
-            if error.contains("error") {
+        Api.Users.singnIn(email: mailAddress, password: password, completion: { isStatus in
+            if isStatus == false {
                 self.errorLabel.text = "ログイン失敗"
-            } else {
+            } else if isStatus == true {
                 self.goToHome()
             }
         })

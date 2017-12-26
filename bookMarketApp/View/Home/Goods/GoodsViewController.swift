@@ -84,11 +84,14 @@ class GoodsViewController: UIViewController {
     }
     
     private func GoToPurchased(){
-        Api.Books.postPurchased(bookName: goodsVM.booksData.name, bookId: String(goodsVM.booksData.id), image1: goodsVM.booksData.imageLists[0]!, completion: {
-            
+        Api.Books.postPurchased(bookName: goodsVM.booksData.name, bookId: String(goodsVM.booksData.id), image1: goodsVM.booksData.imageLists[0]!, completion: { isStatus in
+            if isStatus == false {
+                return
+            } else if isStatus == true {
+                let purchasedGoodsVC = PurchasedGoodsViewController.instantiate(currentBookId: self.goodsVM.currentBookId)
+                self.navigationController?.pushViewController(purchasedGoodsVC , animated: true)
+            }
         })
-        let purchasedGoodsVC = PurchasedGoodsViewController.instantiate(currentBookId: goodsVM.currentBookId)
-        self.navigationController?.pushViewController(purchasedGoodsVC , animated: true)
     }
 }
 

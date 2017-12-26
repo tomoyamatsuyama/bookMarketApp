@@ -53,16 +53,6 @@ struct ProfileData {
     var commentRoomsId: [Int] = []
 }
 
-struct RequestError {
-    enum code: Int {
-        case info
-        case success
-        case redirection
-        case cliantError
-        case serverError
-    }
-}
-
 struct Info {
     enum User: String {
         case id

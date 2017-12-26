@@ -35,10 +35,8 @@ extension Api {
             }
         }
         
-        static func singnIn(email: String, password: String, completion: ((String) -> Void)? = nil) {
-            var errorText: String = ""
-            let path = User.signIn.path
-            guard let url = URL(string: Api.host + path) else { return }
+        static func singnIn(email: String, password: String, completion: ((Bool) -> Void)? = nil) {
+            guard let url = URL(string: Api.host + User.signIn.path) else { return }
             let request = NSMutableURLRequest(url: url)
             request.httpMethod = Api.RequestType.POST.rawValue
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -50,35 +48,31 @@ extension Api {
                 request.httpBody = jsonData
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
-                let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
-                    if respData != nil {
-                        guard let responseData = respData else { return }
-                        guard let errorText = String(data: responseData, encoding: .utf8) else { return }
-                        do{
-                            
-                            let dic = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
-                            guard let dictionary = dic else { return }
-                            guard let auth = dictionary["authentication_token"] else { return }
-                            UserDefaults.standard.set(auth, forKey: Info.User.auth.rawValue)
-                            UserDefaults.standard.set(email, forKey: Info.User.email.rawValue)
-                        } catch {
-                            print("error")
-                        }
+                let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, response, error) -> Void in
+                    guard let responseData = respData else { return }
+                    do{
+                        let dic = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
+                        guard let dictionary = dic else { return }
+                        guard let auth = dictionary["authentication_token"] else { return }
+                        UserDefaults.standard.set(auth, forKey: Info.User.auth.rawValue)
+                        UserDefaults.standard.set(email, forKey: Info.User.email.rawValue)
+                    } catch {
+                        print("error")
                     }
+                    guard let response = response else { return }
+                    let isStatus = Api.checkResponse(response: response)
                     DispatchQueue.main.async {
-                        completion?(errorText)
+                        completion?(isStatus)
                     }
                 })
                 task.resume()
             }catch{
-                errorText = error.localizedDescription
+                print(error.localizedDescription)
             }
         }
         
-        static func resister(email: String, password: String, password_confirmation: String, user_name: String, completion: ((String) -> Void)? = nil) {
-            var errorText: String = ""
-            let path = User.resister.path
-            guard let url = URL(string: Api.host + path) else { return  }
+        static func resister(email: String, password: String, password_confirmation: String, user_name: String, completion: ((Bool) -> Void)? = nil) {
+            guard let url = URL(string: Api.host + User.resister.path) else { return  }
             let request = NSMutableURLRequest(url: url)
             request.httpMethod = Api.RequestType.POST.rawValue
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -90,17 +84,15 @@ extension Api {
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
-                    if respData != nil {
-                        let text = String(data: respData!, encoding: .utf8)
-                        errorText = text!
-                        DispatchQueue.main.async {
-                            completion?(errorText)
-                        }
+                    guard let response = resp else { return }
+                    let isStatus = Api.checkResponse(response: response)
+                    DispatchQueue.main.async {
+                        completion?(isStatus)
                     }
                 })
                 task.resume()
             } catch {
-                errorText = error.localizedDescription
+                print(error.localizedDescription)
             }
         }
         
@@ -128,7 +120,6 @@ extension Api {
                     DispatchQueue.main.async {
                         completion?(profileData)
                     }
-                    
                 } catch let e {
                     print(e)
                 }
@@ -137,11 +128,10 @@ extension Api {
             task.resume()
         }
         
-        static func edit(parameter: [String:String], completion: ((String) -> Void)? = nil) {
-            let path = User.edit.path
-            guard var request = Api.makeRequest(url: Api.host + path, type: Api.RequestType.PUT.rawValue) else { return }
+        static func edit(parameter: [String:String], completion: ((Bool) -> Void)? = nil) {
+            guard var request = Api.makeRequest(url: Api.host + User.edit.path, type: Api.RequestType.PUT.rawValue) else { return }
             // TODO: you can reduce parameters with backend engineer
-            let params = ["user":parameter]
+            let params = ["user": parameter]
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
                 request.httpBody = jsonData
@@ -149,11 +139,10 @@ extension Api {
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: request, completionHandler: { (respData, resp, error) -> Void in
                     guard let responseData = respData else { return }
-                    if respData != nil {
-                        guard let text = String(data: respData!, encoding: .utf8) else { return }
-                        DispatchQueue.main.async {
-                            completion?(text)
-                        }
+                    guard let response = resp else { return }
+                    let isStatus = Api.checkResponse(response: response)
+                    DispatchQueue.main.async {
+                        completion?(isStatus)
                     }
                     do{
                         let dic = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
@@ -170,9 +159,8 @@ extension Api {
             }
         }
         
-        static func signOut(completion: ((String) -> Void)? = nil) {
-            let path = User.signOut.path
-            guard var request = Api.makeRequest(url: Api.host + path, type: Api.RequestType.DELETE.rawValue) else { return }
+        static func signOut(completion: ((Bool) -> Void)? = nil) {
+            guard var request = Api.makeRequest(url: Api.host + User.signOut.path, type: Api.RequestType.DELETE.rawValue) else { return }
             let params: [String:String?] = ["authenticity_token": nil]
             do{
                 let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -180,10 +168,9 @@ extension Api {
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: request, completionHandler: { (respData, resp, error) -> Void in
-                    if respData != nil {
-                        guard let text = String(data: respData!, encoding: .utf8) else { return }
-                        completion?(text)
-                    }
+                    guard let response = resp else { return }
+                    let isStatus = Api.checkResponse(response: response)
+                    completion?(isStatus)
                 })
                 
                 if let appDomain = Bundle.main.bundleIdentifier {

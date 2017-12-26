@@ -50,23 +50,23 @@ extension Api {
             task.resume()
         }
         
-        static func postComment(commentId: String, comment: String, currentUserId: Int, completion: ((String) -> Void)? = nil) {
-            let path = Comment.postComment.path
-            guard var request = Api.makeRequest(url: Api.host + path, type: Api.RequestType.POST.rawValue) else { return }
+        static func postComment(commentId: String, comment: String, currentUserId: Int, completion: ((Bool) -> Void)? = nil) {
+            guard var request = Api.makeRequest(url: Api.host + Comment.postComment.path, type: Api.RequestType.POST.rawValue) else { return }
             let params: [String:Any] = ["comment":["commentroom_id":commentId, "user_id":currentUserId, "comment":"\(comment)"]]
-            do{
+            do {
                 let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
                 request.httpBody = jsonData
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: request, completionHandler: { (respData, resp, error) -> Void in
-                    if respData != nil {
-                        guard let text = String(data: respData!, encoding: .utf8) else { return }
-                        completion?(text)
+                    guard let response = resp else { return }
+                    let isStatus = Api.checkResponse(response: response)
+                    DispatchQueue.main.async {
+                        completion?(isStatus)
                     }
                 })
                 task.resume()
-            }catch{
+            } catch {
                 print(error.localizedDescription)
             }
         }

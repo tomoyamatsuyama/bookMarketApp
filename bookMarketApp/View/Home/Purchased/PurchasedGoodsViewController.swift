@@ -54,15 +54,13 @@ class PurchasedGoodsViewController: UIViewController {
     
     private func transactionConplete(){
         guard let buyId = purchasedGoodsVM.purchasedBookDetailData.buyId else { return }
-        Api.Books.finishTrade(buyId: buyId, completion: { text in
-            if text.contains("error"){
+        Api.Books.finishTrade(buyId: buyId, completion: { isStatus in
+            if isStatus == false {
                 return
-            } else {
+            } else if isStatus == true {
                 self.goToHome()
             }
-            
         })
-        
     }
     
     private func setImage(){

@@ -25,10 +25,10 @@ class MessageViewController: UIViewController {
     
     @IBAction func sendMessageButton(_ sender: Any) {
         guard let message: String = inputMessage.text else { return }
-        Api.Messages.postMessage(message: message, roomId: String(messageViewModel.currentMessageRoomId), completion: { text in
-            if text.contains("error"){
+        Api.Messages.postMessage(message: message, roomId: String(messageViewModel.currentMessageRoomId), completion: { isStatus in
+            if isStatus == false {
                 return
-            } else {
+            } else if isStatus == true {
                 self.inputMessage.text! = ""
                 self.reloadMessage()
             }
@@ -39,6 +39,7 @@ class MessageViewController: UIViewController {
         messageViewModel.setMessage(completion: { [weak self] in
             guard let `self` = self else { return }
             self.messageTableView.reloadData()
+            self.view.endEditing(true)
         })
     }
     

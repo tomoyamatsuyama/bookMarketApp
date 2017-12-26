@@ -68,9 +68,8 @@ extension Api {
             task.resume()
         }
         
-        static func postMessage(message: String, roomId: String, completion: ((String) -> Void)? = nil) {
-            let path = Message.postMessage.path
-            guard var request = Api.makeRequest(url: Api.host + path, type: Api.RequestType.POST.rawValue) else { return }
+        static func postMessage(message: String, roomId: String, completion: ((Bool) -> Void)? = nil) {
+            guard var request = Api.makeRequest(url: Api.host + Message.postMessage.path, type: Api.RequestType.POST.rawValue) else { return }
             let params: [String:Any] = ["message":["content": message, "room_id": roomId]]
             do{
                 let jsonData = try JSONSerialization.data(withJSONObject: params, options: [])
@@ -78,9 +77,10 @@ extension Api {
                 let config = URLSessionConfiguration.default
                 let session = URLSession(configuration: config)
                 let task = session.dataTask(with: request as URLRequest, completionHandler: { (respData, resp, error) -> Void in
-                    if respData != nil {
-                        guard let text = String(data: respData!, encoding: .utf8) else { return }
-                        completion?(text)
+                    guard let response = resp else { return }
+                    let isStatus = Api.checkResponse(response: response)
+                    DispatchQueue.main.async {
+                        completion?(isStatus)
                     }
                 })
                 task.resume()

@@ -51,10 +51,10 @@ class UserProfileViewController: UIViewController {
     
     @IBAction func editButton(_ sender: Any) {
         let parameter = setParameter(mail: inputEmailAddress.text, pass: inputPass.text, confirmPass: inputConfirmPass.text, currentPass: inputCurrentPass.text, name: inputUserName.text)
-        Api.Users.edit(parameter: parameter, completion: { text in
-            if text.contains("error"){
+        Api.Users.edit(parameter: parameter, completion: { isStatus in
+            if isStatus == false {
                 self.errorLabel.text = "不正な値です。"
-            } else {
+            } else if isStatus == true {
                 self.errorLabel.text = "変更完了です。"
                 self.errorLabel.textColor = UIColor.blue
                 self.reloadProfile()

@@ -16,6 +16,16 @@ class Api {
         case DELETE = "DELETE"
     }
     
+    static func checkResponse(response: URLResponse) -> Bool {
+        guard let httpResponse = response as? HTTPURLResponse else { return false }
+        print(httpResponse.statusCode)
+        if 200 <= httpResponse.statusCode || httpResponse.statusCode < 300{
+            return true
+        } else {
+            return false
+        }
+    }
+    
     static var host: String {
         return "http://localhost:3000/"
     }

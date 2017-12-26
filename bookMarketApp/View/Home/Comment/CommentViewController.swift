@@ -29,10 +29,10 @@ class CommentViewController: UIViewController {
     
     @IBAction func sendCommentButton(_ sender: Any) {
         if let comment = inputComment.text {
-            Api.Comments.postComment(commentId: String(commentViewModel.currentRoomId), comment: comment, currentUserId: commentViewModel.commentData.currentUserId, completion: { text in
-                if text.contains("error") {
+            Api.Comments.postComment(commentId: String(commentViewModel.currentRoomId), comment: comment, currentUserId: commentViewModel.commentData.currentUserId, completion: { isStatus in
+                if isStatus == false {
                     return
-                } else {
+                } else if isStatus == true {
                     self.inputComment.text = ""
                     self.reloadComment()
                 }

@@ -40,10 +40,10 @@ class AccountViewController: UIViewController {
         case CellType.myBuyingLists.index:
             goToMyTradingBook()
         case CellType.signOut.index:
-            Api.Users.signOut(completion: { text in
-                if text.contains("error"){
+            Api.Users.signOut(completion: { isStatus in
+                if isStatus == false {
                     return
-                } else {
+                } else if isStatus == true {
                     self.goToSignIn()
                 }
             })
