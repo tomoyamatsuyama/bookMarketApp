@@ -6,6 +6,7 @@
 //  Copyright © 2017年 Tomoya Matsuyama. All rights reserved.
 //
 import UIKit
+
 class MySellingBookViewController: UIViewController {
     @IBOutlet weak var mySellingTableView: UITableView!
     private let refreshControl = UIRefreshControl()

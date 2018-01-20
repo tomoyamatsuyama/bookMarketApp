@@ -26,12 +26,13 @@ class SignUpViewController: UIViewController {
         guard let userName = inputUserName.text else { return }
         Api.Users.resister(email: mailAddress, password: pass, password_confirmation: confirmPass, user_name: userName, completion: { isStatus in
             switch isStatus {
-            case true:
+            case false:
                 self.errorLabel.text = "正確な値を入力してください"
-            default:
+            case true:
                 self.errorLabel.text = "登録完了。\n戻ってログインしてください。"
                 self.errorLabel.numberOfLines = 0
                 self.errorLabel.textColor = UIColor.blue
+                
             }
         })
     }

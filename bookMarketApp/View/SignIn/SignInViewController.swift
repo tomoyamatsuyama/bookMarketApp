@@ -40,6 +40,7 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         inputMailAddress.placeholder = "登録メールアドレス"
         inputPassword.placeholder = "パスワード"
+        inputPassword.isSecureTextEntry = true
     }
 
     override func didReceiveMemoryWarning() {

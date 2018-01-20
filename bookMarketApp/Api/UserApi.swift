@@ -54,6 +54,7 @@ extension Api {
                         let dic = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any]
                         guard let dictionary = dic else { return }
                         guard let auth = dictionary["authentication_token"] else { return }
+                        print(dic)
                         UserDefaults.standard.set(auth, forKey: Info.User.auth.rawValue)
                         UserDefaults.standard.set(email, forKey: Info.User.email.rawValue)
                     } catch {
