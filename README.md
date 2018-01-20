@@ -5,7 +5,7 @@ BookOn
 京都産業大学生向けであり、不要になった教科書をフリマアプリのように売買するアプリ。
 
 ## Demo
-![demo](https://github.com/tomoyamatsuyama/bookMarketApp/blob/master/demo.mov)
+![demo](https://github.com/tomoyamatsuyama/bookMarketApp/blob/master/demo.gif)
 
 ## Description
 ruby on rails と連携して作成中。
